@@ -78,7 +78,7 @@ class DesktopFileEntity: DesktopEntity {
         let imageSize = image.size;
         let imageAspectRatio = imageSize.width / imageSize.height;
         // Create a thumbnail image from this image (this part of the slow operation).
-        let thumbnailSize = NSMakeSize(400 * imageAspectRatio, 400);
+        let thumbnailSize = NSMakeSize(600 * imageAspectRatio, 600);
         let thumbnailImage = NSImage(size: thumbnailSize);
         thumbnailImage.lockFocus()
         image.draw(in: NSMakeRect(0, 0, thumbnailSize.width, thumbnailSize.height), from: NSZeroRect, operation: .sourceOver, fraction: 1.0)

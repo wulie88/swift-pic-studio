@@ -12,7 +12,7 @@ class ThumbnailImageLayoutAttributes: NSCollectionViewLayoutAttributes {
     var imageEntity: DesktopFileEntity?
 }
 
-class ImageFlowLayout: NSCollectionViewFlowLayout {
+class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
     
     var lines: [ThumbnailImageGridLine] = []
     var cachedAttributes: [ThumbnailImageLayoutAttributes] = []
@@ -20,8 +20,9 @@ class ImageFlowLayout: NSCollectionViewFlowLayout {
     var items: [DesktopFileEntity]?
     var maxWidth: CGFloat = 0
     var maxHeight: CGFloat = 0
+    var properCols: CGFloat = 3
     
-    func setup(items: [DesktopFileEntity], containerWidth: CGFloat) {
+    func setup(items: [DesktopFileEntity]) {
         self.items = items
     }
     
@@ -33,10 +34,11 @@ class ImageFlowLayout: NSCollectionViewFlowLayout {
         let width = collectionView?.frame.width ?? 0
         
         // layout line
-        let properHeight:CGFloat = width / 3
+        let properHeight:CGFloat = width / properCols
         let spacing:CGFloat = 10
         var lastLine:ThumbnailImageGridLine? = nil
         self.lines.removeAll()
+        self.cachedAttributes.removeAll()
         for (_, entity) in self.items!.enumerated() {
             if !entity.isMember(of: DesktopFileEntity.self) {
                 continue

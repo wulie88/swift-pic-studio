@@ -704,25 +704,25 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1201" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1201" height="800"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-uw-kgi" customClass="WorkstationView" customModule="swift_pic_studio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1201" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1201" height="800"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="WOD-kp-yG6" customClass="ImageCollectionView" customModule="swift_pic_studio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="1201" height="270"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1201" height="800"/>
                                         <subviews>
                                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQ7-gG-fgo">
-                                                <rect key="frame" x="0.0" y="0.0" width="1201" height="226"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1201" height="766"/>
                                                 <clipView key="contentView" id="I3r-ox-isO">
-                                                    <rect key="frame" x="1" y="1" width="1199" height="224"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <rect key="frame" x="1" y="1" width="1199" height="764"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <collectionView id="In3-wl-zsU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="1199" height="224"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="1199" height="764"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="OWT-us-uqD">
                                                                 <size key="itemSize" width="50" height="50"/>
@@ -743,21 +743,24 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klA-GR-aGM">
-                                                <rect key="frame" x="0.0" y="226" width="1200" height="44"/>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klA-GR-aGM" customClass="ImageCollectionToolbar" customModule="swift_pic_studio" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="766" width="1200" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <subviews>
                                                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udD-Ex-YAy">
-                                                        <rect key="frame" x="589" y="12" width="200" height="19"/>
+                                                        <rect key="frame" x="592" y="8" width="200" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="5" doubleValue="3" tickMarkPosition="above" sliderType="linear" id="ZFr-RS-zJR"/>
+                                                        <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="4" doubleValue="2.2781948324022343" tickMarkPosition="above" sliderType="linear" id="ZFr-RS-zJR"/>
+                                                        <connections>
+                                                            <action selector="sliderValueChangedWithSlider:" target="klA-GR-aGM" id="gxe-IE-VwI"/>
+                                                        </connections>
                                                     </slider>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-RQ-hUr">
-                                                        <rect key="frame" x="1062.5" y="9" width="125" height="23"/>
+                                                        <rect key="frame" x="1067.5" y="6" width="125" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="roundTextured" title="Textured Rounded" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WcO-yr-USO">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="label" size="13"/>
+                                                            <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
                                                 </subviews>
@@ -767,7 +770,7 @@
                                             <constraint firstItem="cQ7-gG-fgo" firstAttribute="leading" secondItem="WOD-kp-yG6" secondAttribute="leading" id="518-q7-YTR"/>
                                             <constraint firstAttribute="trailing" secondItem="cQ7-gG-fgo" secondAttribute="trailing" id="J1o-WV-gyU"/>
                                             <constraint firstAttribute="bottom" secondItem="cQ7-gG-fgo" secondAttribute="bottom" id="JFc-l1-KLn"/>
-                                            <constraint firstItem="cQ7-gG-fgo" firstAttribute="top" secondItem="WOD-kp-yG6" secondAttribute="top" constant="44" id="QYa-Fm-cwg"/>
+                                            <constraint firstItem="cQ7-gG-fgo" firstAttribute="top" secondItem="WOD-kp-yG6" secondAttribute="top" constant="34" id="QYa-Fm-cwg"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="collectionView" destination="In3-wl-zsU" id="NGH-6R-PYt"/>

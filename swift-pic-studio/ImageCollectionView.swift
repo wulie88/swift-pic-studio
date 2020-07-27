@@ -10,13 +10,25 @@ import Cocoa
 
 class ImageCollectionView: NSView {
 
-    var flowLayout: ImageFlowLayout?
+    var flowLayout: ImageCollectionFlowLayout?
     
     @IBOutlet weak var collectionView: NSCollectionView!
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sliderValueChanged), name: NSNotification.Name(rawValue: "sliderValueChanged"), object: nil)
+    }
+    
+    @objc func sliderValueChanged(noti: Notification) {
+        let slider = noti.object as! NSSlider
+        flowLayout!.properCols = CGFloat(6 - slider.floatValue)
+        collectionView.reloadData()
+    }
+    
     func updateItems(items: [DesktopFileEntity]) {
-        flowLayout = ImageFlowLayout()
-        flowLayout?.setup(items: items, containerWidth: self.frame.width)
+        flowLayout = ImageCollectionFlowLayout()
+        flowLayout!.setup(items: items)
         collectionView.collectionViewLayout = flowLayout
 
         self.wantsLayer = true
