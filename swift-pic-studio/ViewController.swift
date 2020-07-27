@@ -9,9 +9,9 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    var items: [DesktopEntity] = []
+    var items: [DesktopFileEntity] = []
     
-    @IBOutlet weak var gridView: ThumbnailImageGridView!
+    @IBOutlet weak var collectionView: ThumbnailImageCollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +20,12 @@ class ViewController: NSViewController {
         
         let urls = fileManager.urls(for: FileManager.SearchPathDirectory.downloadsDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         if urls.count>0 {
-            let picturesURL = urls.last!.appendingPathComponent("2018-02-11 T031 年年尤果")
+            let picturesURL = urls.last!.appendingPathComponent("IOS我的页面开通状态_slices")
             let path = picturesURL.relativePath
             
 
             let entity = DesktopFolderEntity(path: path)
-            self.items = entity.children.filter({ (entity) -> Bool in
+            let items = entity.children.filter({ (entity) -> Bool in
                 if !entity.isMember(of: DesktopFileEntity.self) {
                     return false
                 }
@@ -34,8 +34,8 @@ class ViewController: NSViewController {
                 return imageEntity.size != CGSize.zero
             })
             
-            
-            self.gridView.updateItems(items: items)
+            self.items = items as! [DesktopFileEntity]
+            collectionView.updateItems(items: self.items)
         }
         
     }

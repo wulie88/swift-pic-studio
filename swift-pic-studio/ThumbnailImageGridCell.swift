@@ -11,6 +11,7 @@ import Cocoa
 class ThumbnailImageGridCell: NSTableCellView {
     var imageViews: [NSImageView] = []
     var imageEntities: [DesktopFileEntity] = []
+    var line: ThumbnailImageGridLine? = nil
     
     func clear () {
         imageViews.forEach { (imageView) in
@@ -23,15 +24,16 @@ class ThumbnailImageGridCell: NSTableCellView {
         imageEntities.removeAll()
     }
 
-    func setImages(images: [DesktopEntity]) {
+    func setLine(line: ThumbnailImageGridLine) {
         clear()
         
-        images.forEach { (entity) in
+        self.line = line
+        line.imageEntities.forEach { (entity) in
             if !entity.isMember(of: DesktopFileEntity.self) {
                 return
             }
             
-            let imageEntity = entity as! DesktopFileEntity
+            let imageEntity = entity as DesktopFileEntity
             let imageView = NSImageView()
             imageView.imageAlignment = .alignCenter
             imageView.imageScaling = .scaleProportionallyDown
@@ -46,13 +48,17 @@ class ThumbnailImageGridCell: NSTableCellView {
     }
     
     override func layout() {
-        var x: CGFloat = 0
-        let h: CGFloat = 200
-        for (index, imageView) in imageViews.enumerated() {
-            let size = imageEntities[index].size
-            let w = size.width / size.height * h
-            imageView.frame = NSMakeRect(x, 0, w, h)
-            x += w
+        super.layout()
+        
+        if (line != nil) {
+            var x: CGFloat = line!.spacing
+            let h: CGFloat = line!.rowHeight
+            for (index, imageView) in imageViews.enumerated() {
+                let size = imageEntities[index].size
+                let w = size.width / size.height * h
+                imageView.frame = NSMakeRect(x, 0, w, h)
+                x += w + line!.spacing
+            }
         }
     }
     

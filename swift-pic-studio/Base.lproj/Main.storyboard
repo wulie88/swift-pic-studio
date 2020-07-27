@@ -706,84 +706,67 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="651" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-uw-kgi" customClass="ThumbnailImageGridView" customModule="swift_pic_studio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-uw-kgi" customClass="WorkstationView" customModule="swift_pic_studio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="651" height="270"/>
                                 <subviews>
-                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbb-T5-9rg">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                        <clipView key="contentView" id="PnL-rZ-P5p">
-                                            <rect key="frame" x="1" y="1" width="478" height="268"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" id="lVY-ko-Cce">
-                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="WOD-kp-yG6" customClass="ThumbnailImageCollectionView" customModule="swift_pic_studio" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="651" height="270"/>
+                                        <subviews>
+                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQ7-gG-fgo">
+                                                <rect key="frame" x="260" y="0.0" width="171" height="270"/>
+                                                <clipView key="contentView" id="I3r-ox-isO">
+                                                    <rect key="frame" x="1" y="1" width="169" height="268"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <size key="intercellSpacing" width="3" height="2"/>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                                    <tableColumns>
-                                                        <tableColumn width="475" minWidth="40" maxWidth="1000" id="Moe-gG-3gK">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                            </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="VTq-o8-ajR">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <prototypeCellViews>
-                                                                <tableCellView identifier="ThumbnailImageGridCell" id="icc-Gm-UTj" customClass="ThumbnailImageGridCell" customModule="swift_pic_studio" customModuleProvider="target">
-                                                                    <rect key="frame" x="1" y="1" width="475" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvM-AI-AQa">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="475" height="17"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="jSX-Kc-wCm">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                    </subviews>
-                                                                    <connections>
-                                                                        <outlet property="textField" destination="yvM-AI-AQa" id="Vfe-KA-4je"/>
-                                                                    </connections>
-                                                                </tableCellView>
-                                                            </prototypeCellViews>
-                                                        </tableColumn>
-                                                    </tableColumns>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="Vo6-uw-kgi" id="1Tn-aN-K3u"/>
-                                                        <outlet property="delegate" destination="Vo6-uw-kgi" id="OCN-LV-RKy"/>
-                                                    </connections>
-                                                </tableView>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="gOf-HO-sh0">
-                                            <rect key="frame" x="1" y="119" width="223" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="wsA-Fh-x0v">
-                                            <rect key="frame" x="224" y="17" width="15" height="102"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
+                                                    <subviews>
+                                                        <collectionView id="In3-wl-zsU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="169" height="158"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="OWT-us-uqD">
+                                                                <size key="itemSize" width="50" height="50"/>
+                                                            </collectionViewFlowLayout>
+                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="WOD-kp-yG6" id="pS6-1M-yi2"/>
+                                                            </connections>
+                                                        </collectionView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="bgH-OM-Rcm">
+                                                    <rect key="frame" x="1" y="253" width="169" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="LOj-8A-Kbh">
+                                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cQ7-gG-fgo" firstAttribute="leading" secondItem="WOD-kp-yG6" secondAttribute="leading" constant="260" id="518-q7-YTR"/>
+                                            <constraint firstAttribute="trailing" secondItem="cQ7-gG-fgo" secondAttribute="trailing" constant="220" id="J1o-WV-gyU"/>
+                                            <constraint firstAttribute="bottom" secondItem="cQ7-gG-fgo" secondAttribute="bottom" id="JFc-l1-KLn"/>
+                                            <constraint firstItem="cQ7-gG-fgo" firstAttribute="top" secondItem="WOD-kp-yG6" secondAttribute="top" id="QYa-Fm-cwg"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="collectionView" destination="In3-wl-zsU" id="hsP-PS-vgI"/>
+                                        </connections>
+                                    </customView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WOD-kp-yG6" secondAttribute="trailing" id="GCl-87-xt6"/>
+                                    <constraint firstItem="WOD-kp-yG6" firstAttribute="leading" secondItem="Vo6-uw-kgi" secondAttribute="leading" id="IEr-tv-JiP"/>
+                                    <constraint firstItem="WOD-kp-yG6" firstAttribute="top" secondItem="Vo6-uw-kgi" secondAttribute="top" id="J9U-jb-Ydy"/>
+                                    <constraint firstAttribute="bottom" secondItem="WOD-kp-yG6" secondAttribute="bottom" id="awu-vI-cSO"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
-                                <connections>
-                                    <outlet property="tableView" destination="lVY-ko-Cce" id="2hx-jO-nuC"/>
-                                </connections>
                             </stackView>
                         </subviews>
                         <constraints>
@@ -794,12 +777,25 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="gridView" destination="Vo6-uw-kgi" id="9bf-pz-aPC"/>
+                        <outlet property="collectionView" destination="WOD-kp-yG6" id="5HF-Ba-cIE"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="76" y="688"/>
+        </scene>
+        <!--Thumbnail Image Collection Item-->
+        <scene sceneID="CwZ-Gg-yuq">
+            <objects>
+                <collectionViewItem storyboardIdentifier="ThumbnailImageCollectionItem" id="cXv-U9-IsS" customClass="ThumbnailImageCollectionItem" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Ag0-bl-Cp0">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </collectionViewItem>
+                <customObject id="oty-oY-phV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-235" y="941"/>
         </scene>
     </scenes>
 </document>

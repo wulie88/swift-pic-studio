@@ -41,15 +41,15 @@ class DesktopFileEntity: DesktopEntity {
     override init(path: String) {
         super.init(path: path)
         
-        var attrs = try? FileManager.default.attributesOfItem(atPath: path)
-        var fileHandle = FileHandle(forReadingAtPath: path)
+        let attrs = try? FileManager.default.attributesOfItem(atPath: path)
+        let fileHandle = FileHandle(forReadingAtPath: path)
         if (attrs != nil &&  fileHandle != nil) {
-            let dict = attrs! as NSDictionary
-            var header = fileHandle!.readData(ofLength: 2048)
-            var type = ImageParser.imageType(with: header)
+            let header = fileHandle!.readData(ofLength: 2048)
+            let type = ImageParser.imageType(with: header)
             self.type = type
             if type != .unsupported {
                 self.size = ImageParser.imageSize(with: header)
+//                let dict = attrs! as NSDictionary
 //                var read: UInt64 = 2048
 //                while (type == .jpeg && self.size == CGSize.zero && read < dict.fileSize()) {
 //                    do {
@@ -88,17 +88,17 @@ class DesktopFileEntity: DesktopEntity {
     }
     
     func load() {
-        if (!self.loading) {
+        if (!self.loading && self.thumbnailImage == nil) {
             self.loading = true
             
             DesktopFileEntity.sharedOperationQueue.addBarrierBlock {
                 let image = NSImage(contentsOf: self.fileUrl)
-                self.loading = false
                 if (image != nil) {
                     self.thumbnailImage = DesktopFileEntity.ThumbnailImageFromImage(image: image!)
                 } else {
-                    self.image = NSImage(named: NSImage.trashFullName)
+                    self.thumbnailImage = NSImage(named: NSImage.trashFullName)
                 }
+                self.loading = false
             }
         }
     }

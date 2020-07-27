@@ -8,14 +8,49 @@
 
 import Cocoa
 
-class ThumbnailImageGridView: NSStackView {
+struct ThumbnailImageGridLine {
+    var rowIndex: Int = 0
+    var rowHeight: CGFloat = 0
+    var layoutWidth: CGFloat = 0
+    var imageEntities: [DesktopFileEntity] = []
+    var containerWidth: CGFloat
+    var properHeight: CGFloat
+    var spacing: CGFloat
     
-    var lines: [NSRange] = []
-    var items: [DesktopEntity] = []
+    init(rowIndex: Int, imageEntity:DesktopFileEntity, containerWidth: CGFloat, properHeight: CGFloat, spacing: CGFloat) {
+        self.containerWidth = containerWidth
+        self.properHeight = properHeight
+        self.rowIndex = rowIndex
+        self.spacing = spacing
+        let size = imageEntity.size
+        self.rowHeight = min(size.height, properHeight)
+        self.layoutWidth = size.width / size.height * rowHeight
+        self.imageEntities.append(imageEntity)
+    }
+    
+    mutating func isFullAfterAppend(imageEntity:DesktopFileEntity) -> Bool {
+        let size = imageEntity.size
+        let scaledSize = NSMakeSize(size.width / size.height * rowHeight, rowHeight)
+        if (layoutWidth > containerWidth) {
+            let contentWidth = containerWidth - spacing * CGFloat(imageEntities.count + 1)
+            rowHeight = rowHeight / layoutWidth * contentWidth
+            return true
+        }
+        
+        layoutWidth += scaledSize.width
+        self.imageEntities.append(imageEntity)
+        return false
+    }
+}
+
+class ThumbnailImageGridView: NSView {
+    
+    var lines: [ThumbnailImageGridLine] = []
+    var items: [DesktopFileEntity] = []
     
     @IBOutlet weak var tableView: NSTableView!
     
-    func updateItems(items: [DesktopEntity]) {
+    func updateItems(items: [DesktopFileEntity]) {
         self.items = items
         self.needsLayout = true
     }
@@ -24,34 +59,34 @@ class ThumbnailImageGridView: NSStackView {
         super.layout()
         
         // layout
-        let h:CGFloat = 200.0
         let width = self.frame.width
-        var layoutWidth:CGFloat = 0
-        var lastIndex = 0
+        let properHeight:CGFloat = width / 3
+        let spacing:CGFloat = 20
+        var lastLine:ThumbnailImageGridLine? = nil
         self.lines.removeAll()
-        for (index, entity) in self.items.enumerated() {
+        for (_, entity) in self.items.enumerated() {
             if !entity.isMember(of: DesktopFileEntity.self) {
                 continue
             }
             
-            let imageEntity = entity as! DesktopFileEntity
+            let imageEntity = entity as DesktopFileEntity
             let size = imageEntity.size
             if (size == CGSize.zero) {
                 continue
             }
             
-            let scaledSize = NSMakeSize(size.width / size.height * h, h)
-            layoutWidth += scaledSize.width
-            if (layoutWidth > width) {
-                let range = NSMakeRange(lastIndex, index-lastIndex-1)
-                lastIndex = index - 1
-                layoutWidth = scaledSize.width
-                self.lines.append(range)
-                print("append", range)
+            if (lastLine == nil) {
+                lastLine = ThumbnailImageGridLine(rowIndex: lines.count, imageEntity: imageEntity, containerWidth: width, properHeight: properHeight, spacing: spacing)
+            } else if (lastLine!.isFullAfterAppend(imageEntity: imageEntity)) {
+                self.lines.append(lastLine!)
+                lastLine = ThumbnailImageGridLine(rowIndex: lines.count, imageEntity: imageEntity, containerWidth: width, properHeight: properHeight, spacing: spacing)
             }
-            print(index, layoutWidth, width, scaledSize, lines.count)
         }
-        self.tableView.reloadData()
+        if (lastLine != nil) {
+            self.lines.append(lastLine!)
+        }
+        
+//        self.tableView.reloadData()
     }
 }
 
@@ -69,15 +104,14 @@ extension ThumbnailImageGridView : NSTableViewDelegate {
             return nil
         }
         
-        let range = self.lines[row]
-        print("range", row, range)
-        let imageEntities = Array(self.items[range.location ... range.location+range.length-1])
-        gridCell.setImages(images: imageEntities)
+        let line = self.lines[row]
+        gridCell.setLine(line: line)
         
         return gridCell
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 200.0
+        let line = self.lines[row]
+        return line.rowHeight
     }
 }
