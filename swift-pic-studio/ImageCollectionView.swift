@@ -1,5 +1,5 @@
 //
-//  ThumbnailImageCollectionView.swift
+//  ImageCollectionView.swift
 //  swift-pic-studio
 //
 //  Created by Leo Wu on 2020/7/27.
@@ -10,12 +10,12 @@ import Cocoa
 
 class ImageCollectionView: NSView {
 
-    var flowLayout: ThumbnailImageFlowLayout?
+    var flowLayout: ImageFlowLayout?
     
     @IBOutlet weak var collectionView: NSCollectionView!
     
     func updateItems(items: [DesktopFileEntity]) {
-        flowLayout = ThumbnailImageFlowLayout()
+        flowLayout = ImageFlowLayout()
         flowLayout?.setup(items: items, containerWidth: self.frame.width)
         collectionView.collectionViewLayout = flowLayout
 

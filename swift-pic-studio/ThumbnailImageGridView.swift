@@ -28,6 +28,11 @@ struct ThumbnailImageGridLine {
         self.imageEntities.append(imageEntity)
     }
     
+    mutating func end() {
+        let contentWidth = containerWidth - spacing * CGFloat(imageEntities.count + 1)
+        rowHeight = rowHeight / layoutWidth * contentWidth
+    }
+    
     mutating func isFullAfterAppend(imageEntity:DesktopFileEntity) -> Bool {
         let size = imageEntity.size
         let scaledSize = NSMakeSize(size.width / size.height * rowHeight, rowHeight)

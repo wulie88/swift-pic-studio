@@ -11,7 +11,7 @@ import Cocoa
 class ViewController: NSViewController {
     var items: [DesktopFileEntity] = []
     
-    @IBOutlet weak var collectionView: ThumbnailImageCollectionView!
+    @IBOutlet weak var collectionView: ImageCollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class ViewController: NSViewController {
         
         let urls = fileManager.urls(for: FileManager.SearchPathDirectory.downloadsDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         if urls.count>0 {
-            let picturesURL = urls.last!.appendingPathComponent("IOS我的页面开通状态_slices")
+            let picturesURL = urls.last!.appendingPathComponent("2017-12-06 U326 糖果")
             let path = picturesURL.relativePath
             
 
