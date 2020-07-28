@@ -12,11 +12,13 @@ class ThumbnailImageLayoutAttributes: NSCollectionViewLayoutAttributes {
     var imageEntity: DesktopFileEntity?
 }
 
+enum ImageCollectionFlowLayoutType {
+    case ImageCollectionFlowLayoutTypeAutoFit
+    case ImageCollectionFlowLayoutTypeWaterfall
+}
+
 class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
-    enum ImageCollectionFlowLayoutType {
-        case ImageCollectionFlowLayoutTypeAutoFit
-        case ImageCollectionFlowLayoutTypeWaterfall
-    }
+
     var cachedAttributes: [ThumbnailImageLayoutAttributes] = []
     
     var items: [DesktopFileEntity]?

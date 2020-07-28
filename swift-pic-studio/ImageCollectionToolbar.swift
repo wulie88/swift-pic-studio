@@ -8,18 +8,33 @@
 
 import Cocoa
 
+protocol ImageCollectionToolbarDelegate : NSObjectProtocol {
+    
+    func properColsDidChanged(properCols: Int)
+    
+    func flowLayoutTypeDidChanged(type: ImageCollectionFlowLayoutType)
+}
+
 class ImageCollectionToolbar: NSView {
+    
+    var type: ImageCollectionFlowLayoutType?
+    
+    weak open var delegate: ImageCollectionToolbarDelegate?
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+    func setup(type: ImageCollectionFlowLayoutType) {
+        self.type = type
     }
     
     @IBAction func sliderValueChanged(slider: NSSlider) {
         let step: Float = 1
         let roundedValue = round(slider.floatValue/step) * step
         slider.floatValue = roundedValue
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sliderValueChanged"), object: slider, userInfo: nil)
+        delegate?.properColsDidChanged(properCols: Int(roundedValue))
+    }
+    
+    @IBAction func typeButtonDidClick(button: NSButton) {
+        let type = self.type == ImageCollectionFlowLayoutType.ImageCollectionFlowLayoutTypeAutoFit ? ImageCollectionFlowLayoutType.ImageCollectionFlowLayoutTypeWaterfall : ImageCollectionFlowLayoutType.ImageCollectionFlowLayoutTypeAutoFit
+        delegate?.flowLayoutTypeDidChanged(type: type)
+        self.type = type
     }
 }

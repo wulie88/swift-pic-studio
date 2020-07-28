@@ -35,7 +35,7 @@ class WorkstationView: NSStackView {
         let fileManager = FileManager()
         
         var isDir: ObjCBool = false
-        let isFileExists = fileManager.fileExists(atPath: path, isDirectory: &isDir)
+        fileManager.fileExists(atPath: path, isDirectory: &isDir)
         if (isDir.boolValue) {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openFolder"), object: path, userInfo: nil)
             return true

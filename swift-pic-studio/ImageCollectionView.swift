@@ -12,28 +12,21 @@ class ImageCollectionView: NSView {
 
     var flowLayout: ImageCollectionFlowLayout?
     
+    @IBOutlet weak var toobar: ImageCollectionToolbar!
+    
     @IBOutlet weak var collectionView: NSCollectionView!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(sliderValueChanged), name: NSNotification.Name(rawValue: "sliderValueChanged"), object: nil)
-    }
-    
-    @objc func sliderValueChanged(noti: Notification) {
-        let slider = noti.object as! NSSlider
-        flowLayout!.properCols = 6 - slider.integerValue
-        collectionView.reloadData()
     }
     
     func updateItems(items: [DesktopFileEntity]) {
         flowLayout = ImageCollectionFlowLayout()
         flowLayout!.setup(items: items)
         collectionView.collectionViewLayout = flowLayout
-
-        self.wantsLayer = true
-
-        collectionView.layer?.backgroundColor = NSColor.black.cgColor
+        toobar.setup(type: flowLayout!.type)
+        toobar.delegate = self
+        
         self.needsLayout = true
     }
     
@@ -58,5 +51,18 @@ extension ImageCollectionView : NSCollectionViewDataSource {
         }
         
         return item
+    }
+}
+
+extension ImageCollectionView : ImageCollectionToolbarDelegate {
+    
+    func properColsDidChanged(properCols: Int) {
+        flowLayout!.properCols = 6 - properCols
+        collectionView.reloadData()
+    }
+    
+    func flowLayoutTypeDidChanged(type: ImageCollectionFlowLayoutType) {
+        flowLayout!.type = type
+        collectionView.reloadData()
     }
 }

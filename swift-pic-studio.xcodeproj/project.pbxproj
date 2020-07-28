@@ -14,6 +14,8 @@
 		278E375424CFCAE800B31697 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E375324CFCAE800B31697 /* Document.swift */; };
 		8116EB8624CF3C9300D3D29C /* ImageCollectionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */; };
 		812DEC3924D061770098FA7F /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3824D061770098FA7F /* DocumentController.swift */; };
+		812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */; };
+		812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */; };
 		8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */; };
 		8158CCD424CDAD7F00BD1240 /* FolderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD324CDAD7F00BD1240 /* FolderWindowController.swift */; };
 		8158CCD624CDAD8100BD1240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8158CCD524CDAD8100BD1240 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		307EBD430F8FF937187430F7 /* Pods_swift_pic_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_pic_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionToolbar.swift; sourceTree = "<group>"; };
 		812DEC3824D061770098FA7F /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
+		812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueListView.swift; sourceTree = "<group>"; };
+		812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasheetEditerView.swift; sourceTree = "<group>"; };
 		8158CCCE24CDAD7F00BD1240 /* swift-pic-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-pic-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8158CCD324CDAD7F00BD1240 /* FolderWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderWindowController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			children = (
 				8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */,
 				8158CCD524CDAD8100BD1240 /* Assets.xcassets */,
+				812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */,
 				278E375324CFCAE800B31697 /* Document.swift */,
 				812DEC3824D061770098FA7F /* DocumentController.swift */,
 				8158CCD324CDAD7F00BD1240 /* FolderWindowController.swift */,
@@ -98,6 +103,7 @@
 				8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */,
 				8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */,
 				278E372D24CEAF8D00B31697 /* WorkstationView.swift */,
+				812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */,
 			);
 			path = "swift-pic-studio";
 			sourceTree = "<group>";
@@ -252,6 +258,8 @@
 				8158CCD424CDAD7F00BD1240 /* FolderWindowController.swift in Sources */,
 				278E375424CFCAE800B31697 /* Document.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
+				812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */,
+				812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */,
 				812DEC3924D061770098FA7F /* DocumentController.swift in Sources */,
 				8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */,
 				278E373224CEBAD100B31697 /* ImageCollectionView.swift in Sources */,
