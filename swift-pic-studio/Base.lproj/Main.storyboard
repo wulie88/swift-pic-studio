@@ -59,14 +59,9 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
-                                            <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
-                                                <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
+                                                <action selector="openDocument:" target="Ady-hI-5gd" id="O84-82-Rr3"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open Recent" id="tXI-mr-wws">
@@ -683,7 +678,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="Document Window Controller" id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="FolderWindowController" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -701,10 +696,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Folder Window Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="FolderWindowController" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="1200" height="800"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -758,7 +753,7 @@
                                                         </connections>
                                                     </slider>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HvZ-gX-ajX">
-                                                        <rect key="frame" x="1166" y="4" width="24" height="25"/>
+                                                        <rect key="frame" x="1165.5" y="4" width="25" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="24" id="Pog-AA-R8S"/>
                                                             <constraint firstAttribute="height" constant="24" id="vN8-ZG-JVa"/>
@@ -769,7 +764,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-RQ-hUr">
-                                                        <rect key="frame" x="1141" y="6" width="22" height="23"/>
+                                                        <rect key="frame" x="1141.5" y="6" width="22" height="23"/>
                                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="conditions" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WcO-yr-USO">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -859,6 +854,77 @@
                 <customObject id="oty-oY-phV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-235" y="941"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="POJ-uK-QuU">
+            <objects>
+                <viewController storyboardIdentifier="EmptyViewController" id="Vdc-Ks-Dwm" sceneMemberID="viewController">
+                    <view key="view" id="wHF-qE-dUb">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mtl-Nv-ybd">
+                                <rect key="frame" x="186" y="259" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="欢迎使用" id="YeP-f4-dfm">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XOL-bN-nAp">
+                                <rect key="frame" x="130" y="125" width="190" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="请使用菜单打开文件夹或者文件" id="mbA-eR-c0E">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObA-WW-UfH">
+                                <rect key="frame" x="109" y="180" width="265" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="图片收集及管理专家，必备生产力工具" id="NFR-L5-d27">
+                                    <font key="font" metaFont="system" size="15"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsF-84-KYV">
+                                <rect key="frame" x="159" y="222" width="133" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="swift-pic-studio" id="hz1-I8-Ayy">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="a27-V0-68p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="733"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="nAT-nv-Jrk">
+            <objects>
+                <windowController storyboardIdentifier="EmptyWindowController" id="Q3D-xk-um1" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="EmptyWindow" animationBehavior="default" titleVisibility="hidden" id="UbE-8G-vVd">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="screenRect" x="-1920" y="-222" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="Q3D-xk-um1" id="wFh-TO-nZh"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Vdc-Ks-Dwm" kind="relationship" relationship="window.shadowedContentViewController" id="jzZ-zx-cB7"/>
+                    </connections>
+                </windowController>
+                <customObject id="H69-Av-Bh8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="250"/>
         </scene>
     </scenes>
     <resources>

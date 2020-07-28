@@ -16,7 +16,7 @@ class WorkstationView: NSStackView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
+//        registerForDraggedTypes([NSPasteboard.PasteboardType.URL, NSPasteboard.PasteboardType.fileURL])
     }
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {

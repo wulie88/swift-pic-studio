@@ -10,8 +10,12 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
+    
+    var documentController: DocumentController?
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        documentController = DocumentController()
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -20,7 +24,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-
+    
+    @IBAction func openDocument(_ openMenuItem: NSMenuItem) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.canCreateDirectories = true
+        let i = openPanel.runModal()
+        if i == NSApplication.ModalResponse.OK {
+            print("The directory selected is " + openPanel.url!.absoluteString)
+            
+            documentController?.openDocument(withContentsOf: openPanel.url!, display: true, completionHandler: { (document, res, error) in
+                
+            })
+        }
+    }
 }
 

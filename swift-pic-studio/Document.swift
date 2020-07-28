@@ -22,8 +22,16 @@ class Document: NSDocument {
     override func makeWindowControllers() {
         // Returns the Storyboard that contains your Document window.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
-        self.addWindowController(windowController)
+        var windowController: NSWindowController? = nil
+        if fileType == String(kUTTypeFolder) {
+            windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("FolderWindowController")) as? NSWindowController
+            let folderWindowController = windowController!.contentViewController as! FolderWindowController
+            folderWindowController.folder = fileURL?.relativePath
+        } else {
+            windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EmptyWindowController")) as? NSWindowController
+        }
+        
+        self.addWindowController(windowController!)
     }
 
     override func data(ofType typeName: String) throws -> Data {
@@ -39,6 +47,10 @@ class Document: NSDocument {
         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
 
-
+    override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
+        if typeName != String(kUTTypeFolder) {
+            throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
+        }
+    }
 }
 

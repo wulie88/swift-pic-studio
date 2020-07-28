@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FolderWindowController.swift
 //  swift-pic-studio
 //
 //  Created by boss on 2020/7/26.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class FolderWindowController: NSViewController {
     
     var folder: String?
     
@@ -18,8 +18,19 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            
-        let path = folder ?? defalutFolder()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(openFolder), name: NSNotification.Name(rawValue: "openFolder"), object: nil)
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        if (folder != nil) {
+            loadData(path: folder!)
+        }
+    }
+    
+    func loadData(path: String) {
         let entity = DesktopFolderEntity(path: path)
         let items = entity.children.filter({ (entity) -> Bool in
             if !entity.isMember(of: DesktopFileEntity.self) {
@@ -32,15 +43,13 @@ class ViewController: NSViewController {
         
         self.items = items as! [DesktopFileEntity]
         collectionView.updateItems(items: self.items)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(openFolder), name: NSNotification.Name(rawValue: "openFolder"), object: nil)
     }
     
     @objc func openFolder(noti: Notification) {
         let path = noti.object as! String
         
         
-        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("ViewController"))) as! ViewController
+        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("ViewController"))) as! FolderWindowController
         vc.folder = path
         
         self.presentAsModalWindow(vc)
