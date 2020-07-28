@@ -22,7 +22,7 @@ class ImageCollectionView: NSView {
     
     @objc func sliderValueChanged(noti: Notification) {
         let slider = noti.object as! NSSlider
-        flowLayout!.properCols = CGFloat(6 - slider.floatValue)
+        flowLayout!.properCols = 6 - slider.integerValue
         collectionView.reloadData()
     }
     

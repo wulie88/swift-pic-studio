@@ -11,6 +11,7 @@
 		278E373024CEB9A900B31697 /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E372F24CEB9A900B31697 /* ImageCollectionItem.swift */; };
 		278E373224CEBAD100B31697 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E373124CEBAD100B31697 /* ImageCollectionView.swift */; };
 		278E373424CEF1A300B31697 /* ImageCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E373324CEF1A300B31697 /* ImageCollectionFlowLayout.swift */; };
+		278E375424CFCAE800B31697 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E375324CFCAE800B31697 /* Document.swift */; };
 		8116EB8624CF3C9300D3D29C /* ImageCollectionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */; };
 		8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */; };
 		8158CCD424CDAD7F00BD1240 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD324CDAD7F00BD1240 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		278E372F24CEB9A900B31697 /* ImageCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionItem.swift; sourceTree = "<group>"; };
 		278E373124CEBAD100B31697 /* ImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
 		278E373324CEF1A300B31697 /* ImageCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		278E375324CFCAE800B31697 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		307EBD430F8FF937187430F7 /* Pods_swift_pic_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_pic_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionToolbar.swift; sourceTree = "<group>"; };
 		8158CCCE24CDAD7F00BD1240 /* swift-pic-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-pic-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 				278E373124CEBAD100B31697 /* ImageCollectionView.swift */,
 				278E373324CEF1A300B31697 /* ImageCollectionFlowLayout.swift */,
 				8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */,
+				278E375324CFCAE800B31697 /* Document.swift */,
 			);
 			path = "swift-pic-studio";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				278E373024CEB9A900B31697 /* ImageCollectionItem.swift in Sources */,
 				8158CCEA24CDBCCB00BD1240 /* DesktopEntity.swift in Sources */,
 				8158CCD424CDAD7F00BD1240 /* ViewController.swift in Sources */,
+				278E375424CFCAE800B31697 /* Document.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
 				8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */,
 				278E373224CEBAD100B31697 /* ImageCollectionView.swift in Sources */,

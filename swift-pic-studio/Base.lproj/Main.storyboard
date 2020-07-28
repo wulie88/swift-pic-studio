@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -683,7 +683,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="Document Window Controller" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -706,23 +706,23 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="swift_pic_studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1201" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1200" height="800"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-uw-kgi" customClass="WorkstationView" customModule="swift_pic_studio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1201" height="800"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1200" height="800"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="WOD-kp-yG6" customClass="ImageCollectionView" customModule="swift_pic_studio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="1201" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1200" height="800"/>
                                         <subviews>
                                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQ7-gG-fgo">
-                                                <rect key="frame" x="0.0" y="0.0" width="1201" height="766"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1200" height="766"/>
                                                 <clipView key="contentView" id="I3r-ox-isO">
-                                                    <rect key="frame" x="1" y="1" width="1199" height="764"/>
+                                                    <rect key="frame" x="1" y="1" width="1198" height="764"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <collectionView id="In3-wl-zsU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="1199" height="764"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="1198" height="764"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="OWT-us-uqD">
                                                                 <size key="itemSize" width="50" height="50"/>
@@ -743,33 +743,59 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klA-GR-aGM" customClass="ImageCollectionToolbar" customModule="swift_pic_studio" customModuleProvider="target">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="klA-GR-aGM" customClass="ImageCollectionToolbar" customModule="swift_pic_studio" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="766" width="1200" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <subviews>
-                                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udD-Ex-YAy">
-                                                        <rect key="frame" x="592" y="8" width="200" height="19"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="4" doubleValue="2.2781948324022343" tickMarkPosition="above" sliderType="linear" id="ZFr-RS-zJR"/>
+                                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="udD-Ex-YAy">
+                                                        <rect key="frame" x="498" y="8" width="204" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="15" id="1oe-hV-atc"/>
+                                                            <constraint firstAttribute="width" constant="200" id="XG2-bG-sSt"/>
+                                                        </constraints>
+                                                        <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="4" doubleValue="3" tickMarkPosition="above" allowsTickMarkValuesOnly="YES" sliderType="linear" id="ZFr-RS-zJR"/>
                                                         <connections>
                                                             <action selector="sliderValueChangedWithSlider:" target="klA-GR-aGM" id="gxe-IE-VwI"/>
                                                         </connections>
                                                     </slider>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-RQ-hUr">
-                                                        <rect key="frame" x="1067.5" y="6" width="125" height="23"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="roundTextured" title="Textured Rounded" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WcO-yr-USO">
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HvZ-gX-ajX">
+                                                        <rect key="frame" x="1166" y="4" width="24" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="24" id="Pog-AA-R8S"/>
+                                                            <constraint firstAttribute="height" constant="24" id="vN8-ZG-JVa"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="filter" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bOI-AM-Czb">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-RQ-hUr">
+                                                        <rect key="frame" x="1141" y="6" width="22" height="23"/>
+                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="conditions" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WcO-yr-USO">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="udD-Ex-YAy" firstAttribute="centerX" secondItem="klA-GR-aGM" secondAttribute="centerX" id="23I-37-P0Z"/>
+                                                    <constraint firstAttribute="height" constant="34" id="3eQ-cA-56W"/>
+                                                    <constraint firstItem="HvZ-gX-ajX" firstAttribute="top" secondItem="klA-GR-aGM" secondAttribute="top" constant="5" id="DLb-Bv-TFF"/>
+                                                    <constraint firstItem="udD-Ex-YAy" firstAttribute="centerY" secondItem="klA-GR-aGM" secondAttribute="centerY" id="Lcm-4l-tji"/>
+                                                    <constraint firstItem="HvZ-gX-ajX" firstAttribute="leading" secondItem="YUn-RQ-hUr" secondAttribute="trailing" constant="5" id="NCm-k9-Gwn"/>
+                                                    <constraint firstItem="YUn-RQ-hUr" firstAttribute="width" secondItem="HvZ-gX-ajX" secondAttribute="width" id="PVG-VZ-eLO"/>
+                                                    <constraint firstItem="YUn-RQ-hUr" firstAttribute="height" secondItem="HvZ-gX-ajX" secondAttribute="height" id="TKi-hc-Qi4"/>
+                                                    <constraint firstItem="YUn-RQ-hUr" firstAttribute="top" secondItem="HvZ-gX-ajX" secondAttribute="top" id="f3m-Gj-vk0"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HvZ-gX-ajX" secondAttribute="trailing" constant="10" id="uc1-A8-qAM"/>
+                                                </constraints>
                                             </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="cQ7-gG-fgo" firstAttribute="leading" secondItem="WOD-kp-yG6" secondAttribute="leading" id="518-q7-YTR"/>
+                                            <constraint firstItem="klA-GR-aGM" firstAttribute="top" secondItem="WOD-kp-yG6" secondAttribute="top" id="587-Yv-oI8"/>
+                                            <constraint firstAttribute="trailing" secondItem="klA-GR-aGM" secondAttribute="trailing" id="BGd-bH-A3r"/>
                                             <constraint firstAttribute="trailing" secondItem="cQ7-gG-fgo" secondAttribute="trailing" id="J1o-WV-gyU"/>
                                             <constraint firstAttribute="bottom" secondItem="cQ7-gG-fgo" secondAttribute="bottom" id="JFc-l1-KLn"/>
+                                            <constraint firstItem="klA-GR-aGM" firstAttribute="leading" secondItem="WOD-kp-yG6" secondAttribute="leading" id="PWh-2l-sV5"/>
                                             <constraint firstItem="cQ7-gG-fgo" firstAttribute="top" secondItem="WOD-kp-yG6" secondAttribute="top" constant="34" id="QYa-Fm-cwg"/>
                                         </constraints>
                                         <connections>
@@ -804,7 +830,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.5" y="688"/>
+            <point key="canvasLocation" x="76" y="1036"/>
         </scene>
         <!--Image Collection Item-->
         <scene sceneID="CwZ-Gg-yuq">
@@ -814,7 +840,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-Gn-tZg">
+                            <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-Gn-tZg">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="cIe-1r-q3L"/>
                             </imageView>
@@ -835,4 +861,8 @@
             <point key="canvasLocation" x="-235" y="941"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="conditions" width="200" height="200"/>
+        <image name="filter" width="200" height="200"/>
+    </resources>
 </document>

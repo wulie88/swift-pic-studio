@@ -13,14 +13,18 @@ class ThumbnailImageLayoutAttributes: NSCollectionViewLayoutAttributes {
 }
 
 class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
-    
-    var lines: [ThumbnailImageGridLine] = []
+    enum ImageCollectionFlowLayoutType {
+        case ImageCollectionFlowLayoutTypeAutoFit
+        case ImageCollectionFlowLayoutTypeWaterfall
+    }
     var cachedAttributes: [ThumbnailImageLayoutAttributes] = []
     
     var items: [DesktopFileEntity]?
     var maxWidth: CGFloat = 0
     var maxHeight: CGFloat = 0
-    var properCols: CGFloat = 3
+    var properCols: Int = 3
+    let spacing: CGFloat = 10
+    var type: ImageCollectionFlowLayoutType = .ImageCollectionFlowLayoutTypeWaterfall
     
     func setup(items: [DesktopFileEntity]) {
         self.items = items
@@ -31,25 +35,25 @@ class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
     }
     
     override func prepare() {
+        if (type == .ImageCollectionFlowLayoutTypeAutoFit) {
+            clacAutofitLayout()
+        } else {
+            clacWaterfallLayout()
+        }
+    }
+    
+    var lines: [ThumbnailImageGridLine] = []
+    func clacAutofitLayout() {
+        maxWidth = 0
+        maxHeight = 0
         let width = collectionView?.frame.width ?? 0
         
         // layout line
-        let properHeight:CGFloat = width / properCols
-        let spacing:CGFloat = 10
+        let properHeight:CGFloat = width / CGFloat(properCols)
         var lastLine:ThumbnailImageGridLine? = nil
         self.lines.removeAll()
         self.cachedAttributes.removeAll()
-        for (_, entity) in self.items!.enumerated() {
-            if !entity.isMember(of: DesktopFileEntity.self) {
-                continue
-            }
-            
-            let imageEntity = entity as DesktopFileEntity
-            let size = imageEntity.size
-            if (size == CGSize.zero) {
-                continue
-            }
-            
+        for (_, imageEntity) in self.items!.enumerated() {
             if (lastLine == nil) {
                 lastLine = ThumbnailImageGridLine(rowIndex: lines.count, imageEntity: imageEntity, containerWidth: width, properHeight: properHeight, spacing: spacing)
             } else if (lastLine!.isFullAfterAppend(imageEntity: imageEntity)) {
@@ -81,11 +85,49 @@ class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
                 maxWidth = max(maxWidth, frame.maxX)
                 maxHeight = max(maxWidth, frame.maxY)
                 index += 1
-                print(indexPath, frame)
             }
             y += h + line.spacing
         }
         maxHeight += spacing
+    }
+    
+    var colsHeight: [CGFloat] = []
+    func clacWaterfallLayout() {
+        maxWidth = 0
+        maxHeight = 0
+        let width = collectionView?.frame.width ?? 0
+        
+        // layout line
+        let properWidth:CGFloat = (width - CGFloat(properCols + 1) * spacing) / CGFloat(properCols)
+        self.colsHeight = [CGFloat](repeating: spacing, count: properCols)
+        self.cachedAttributes.removeAll()
+        for (index, imageEntity) in self.items!.enumerated() {
+            let size = imageEntity.size
+            let scaledSize = NSMakeSize(properWidth, size.height / size.width * properWidth)
+            var colIndex = 0
+            // 找到最短的列
+            var minHeight:CGFloat = colsHeight[0]
+            for idx in 1 ... colsHeight.count-1 {
+                let height = colsHeight[idx]
+                if (height <= minHeight) {
+                    colIndex = idx
+                    minHeight = height
+                    break
+                }
+            }
+            let x = CGFloat(colIndex + 1) * spacing + CGFloat(colIndex) * properWidth
+            let frame = NSMakeRect(x, colsHeight[colIndex], scaledSize.width, scaledSize.height)
+            colsHeight[colIndex] += scaledSize.height + spacing
+            let indexPath = IndexPath(item: index, section: 0)
+            let attrs = ThumbnailImageLayoutAttributes(forItemWith: indexPath)
+            attrs.frame = frame
+            attrs.size = frame.size
+            attrs.zIndex = 10
+            attrs.imageEntity = imageEntity
+            cachedAttributes.append(attrs)
+            maxHeight = max(maxHeight, colsHeight[colIndex])
+        }
+        maxWidth = width
     }
     
     override var collectionViewContentSize: NSSize {

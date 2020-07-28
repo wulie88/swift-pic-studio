@@ -16,15 +16,16 @@ class ImageCollectionItem: NSCollectionViewItem {
         super.viewDidLoad()
         // Do view setup here.
         
-        self.view.wantsLayer = true
-        self.view.layer?.backgroundColor = NSColor.gray.cgColor
+        imageView!.imageAlignment = .alignCenter
+        imageView!.imageScaling = .scaleProportionallyDown
+        imageView!.layer?.cornerRadius = 7
+        imageView!.layer?.masksToBounds = true
+        imageView!.layer?.borderColor = NSColor.lightGray.cgColor
+        imageView!.layer?.borderWidth = 1
     }
     
     func setImageEntity(imageEntity: DesktopFileEntity) {
         self.imageEntity = imageEntity
-        
-        imageView!.imageAlignment = .alignCenter
-        imageView!.imageScaling = .scaleProportionallyDown
         imageView!.image = imageEntity.thumbnailImage
         
         imageEntity.addObserver(self, forKeyPath: DesktopFileEntity.ThumbnailImageLoadedKeyPath, options: .new, context: nil)

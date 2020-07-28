@@ -49,7 +49,7 @@ class ViewController: NSViewController {
     func defalutFolder() -> String {
         let fileManager = FileManager()
         let urls = fileManager.urls(for: FileManager.SearchPathDirectory.downloadsDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
-            let picturesURL = urls.last!.appendingPathComponent("2017-12-06 U326 糖果")
+            let picturesURL = urls.last!.appendingPathComponent("example")
           return picturesURL.relativePath
     }
 

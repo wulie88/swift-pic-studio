@@ -81,7 +81,12 @@ class DesktopFileEntity: DesktopEntity {
         let thumbnailSize = NSMakeSize(600 * imageAspectRatio, 600);
         let thumbnailImage = NSImage(size: thumbnailSize);
         thumbnailImage.lockFocus()
+        
+//        NSGraphicsContext.current?.imageInterpolation = .high
+//        let frame = NSRect(origin: .zero, size: thumbnailSize)
+//        NSBezierPath(roundedRect: frame, xRadius: 10, yRadius: 10).addClip()
         image.draw(in: NSMakeRect(0, 0, thumbnailSize.width, thumbnailSize.height), from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
+        
         thumbnailImage.unlockFocus()
         
         return thumbnailImage
