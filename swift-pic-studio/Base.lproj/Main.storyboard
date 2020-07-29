@@ -714,7 +714,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="260" height="800"/>
                                                 <clipView key="contentView" id="yhg-rI-qCD">
                                                     <rect key="frame" x="1" y="0.0" width="258" height="799"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Vzl-st-0YO" viewBased="YES" id="HCZ-N0-vC8">
                                                             <rect key="frame" x="0.0" y="0.0" width="258" height="774"/>
@@ -820,7 +820,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="1226" height="766"/>
                                                 <clipView key="contentView" copiesOnScroll="NO" id="I3r-ox-isO">
                                                     <rect key="frame" x="0.0" y="0.0" width="1226" height="766"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView id="In3-wl-zsU">
                                                             <rect key="frame" x="0.0" y="0.0" width="1226" height="766"/>
@@ -848,28 +848,8 @@
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="klA-GR-aGM" customClass="ImageCollectionToolbar" customModule="swift_pic_studio" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="766" width="1226" height="34"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HvZ-gX-ajX">
-                                                        <rect key="frame" x="1189.5" y="4" width="27" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="24" id="vN8-ZG-JVa"/>
-                                                        </constraints>
-                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="filter" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bOI-AM-Czb">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-RQ-hUr">
-                                                        <rect key="frame" x="1155.5" y="4" width="27" height="25"/>
-                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="conditions" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WcO-yr-USO">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="typeButtonDidClickWithButton:" target="klA-GR-aGM" id="y9B-ZF-RmD"/>
-                                                        </connections>
-                                                    </button>
                                                     <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udD-Ex-YAy">
-                                                        <rect key="frame" x="447" y="7" width="204" height="19"/>
+                                                        <rect key="frame" x="447" y="8" width="204" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="1oe-hV-atc"/>
                                                             <constraint firstAttribute="width" constant="200" id="XG2-bG-sSt"/>
@@ -879,17 +859,52 @@
                                                             <action selector="sliderValueChangedWithSlider:" target="klA-GR-aGM" id="gxe-IE-VwI"/>
                                                         </connections>
                                                     </slider>
+                                                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCe-Pl-w4A">
+                                                        <rect key="frame" x="5" y="6" width="71" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectAny" id="zvX-Oa-uag">
+                                                            <font key="font" metaFont="system"/>
+                                                            <segments>
+                                                                <segment image="arrow-lift" width="32"/>
+                                                                <segment image="arrow-right" width="32" tag="1"/>
+                                                            </segments>
+                                                        </segmentedCell>
+                                                    </segmentedControl>
+                                                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pK-6A-Voy">
+                                                        <rect key="frame" x="916" y="5" width="109" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="wHS-Uh-ph9">
+                                                            <font key="font" metaFont="system"/>
+                                                            <segments>
+                                                                <segment toolTip="自适应布局" image="conditions" width="51" selected="YES"/>
+                                                                <segment toolTip="瀑布流布局" image="descending" width="51" tag="1"/>
+                                                            </segments>
+                                                        </segmentedCell>
+                                                    </segmentedControl>
+                                                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGf-8Q-F8G">
+                                                        <rect key="frame" x="1035" y="6" width="38" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectAny" id="3oc-R4-am5">
+                                                            <font key="font" metaFont="system"/>
+                                                            <segments>
+                                                                <segment image="filter" width="32"/>
+                                                            </segments>
+                                                        </segmentedCell>
+                                                    </segmentedControl>
+                                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS9-ei-OBd">
+                                                        <rect key="frame" x="1081" y="7" width="131" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="搜索" usesSingleLineMode="YES" bezelStyle="round" recentsAutosaveName="keywords" id="Jet-NX-sZu">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </searchFieldCell>
+                                                    </searchField>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="udD-Ex-YAy" firstAttribute="centerX" secondItem="klA-GR-aGM" secondAttribute="centerX" id="23I-37-P0Z"/>
                                                     <constraint firstAttribute="height" constant="34" id="3eQ-cA-56W"/>
-                                                    <constraint firstItem="HvZ-gX-ajX" firstAttribute="top" secondItem="klA-GR-aGM" secondAttribute="top" constant="5" id="DLb-Bv-TFF"/>
                                                     <constraint firstItem="udD-Ex-YAy" firstAttribute="centerY" secondItem="klA-GR-aGM" secondAttribute="centerY" id="Lcm-4l-tji"/>
-                                                    <constraint firstItem="HvZ-gX-ajX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YUn-RQ-hUr" secondAttribute="trailing" constant="8" symbolic="YES" id="NCm-k9-Gwn"/>
-                                                    <constraint firstItem="YUn-RQ-hUr" firstAttribute="width" secondItem="HvZ-gX-ajX" secondAttribute="width" id="PVG-VZ-eLO"/>
-                                                    <constraint firstItem="YUn-RQ-hUr" firstAttribute="height" secondItem="HvZ-gX-ajX" secondAttribute="height" id="TKi-hc-Qi4"/>
-                                                    <constraint firstItem="YUn-RQ-hUr" firstAttribute="top" secondItem="HvZ-gX-ajX" secondAttribute="top" id="f3m-Gj-vk0"/>
-                                                    <constraint firstAttribute="trailing" secondItem="HvZ-gX-ajX" secondAttribute="trailing" constant="10" id="uc1-A8-qAM"/>
                                                 </constraints>
                                             </customView>
                                         </subviews>
@@ -929,7 +944,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="234" height="750"/>
                                                                     <clipView key="contentView" id="tE9-TM-azQ">
                                                                         <rect key="frame" x="1" y="1" width="232" height="748"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <view id="AL3-70-AlV">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="217" height="733"/>
@@ -1112,7 +1127,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow-lift" width="200" height="200"/>
+        <image name="arrow-right" width="200" height="200"/>
         <image name="conditions" width="200" height="200"/>
+        <image name="descending" width="200" height="200"/>
         <image name="filter" width="200" height="200"/>
     </resources>
 </document>

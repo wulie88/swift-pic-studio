@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FolderWindowController: NSViewController {
+class FolderViewController: NSViewController {
     
     var folder: String?
     
@@ -18,6 +18,7 @@ class FolderWindowController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         NotificationCenter.default.addObserver(self, selector: #selector(openFolder), name: NSNotification.Name(rawValue: "openFolder"), object: nil)
     }
@@ -49,7 +50,7 @@ class FolderWindowController: NSViewController {
         let path = noti.object as! String
         
         
-        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("ViewController"))) as! FolderWindowController
+        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("ViewController"))) as! FolderViewController
         vc.folder = path
         
         self.presentAsModalWindow(vc)

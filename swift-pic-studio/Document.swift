@@ -25,7 +25,14 @@ class Document: NSDocument {
         var windowController: NSWindowController? = nil
         if fileType == String(kUTTypeFolder) {
             windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("FolderWindowController")) as? NSWindowController
-            let folderWindowController = windowController!.contentViewController as! FolderWindowController
+            
+            if var window = windowController?.window {
+                window.titlebarAppearsTransparent = true
+                window.titleVisibility = .hidden
+                window.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
+            }
+            
+            let folderWindowController = windowController!.contentViewController as! FolderViewController
             folderWindowController.folder = fileURL?.relativePath
         } else {
             windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EmptyWindowController")) as? NSWindowController
