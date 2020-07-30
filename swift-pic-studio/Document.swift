@@ -26,7 +26,7 @@ class Document: NSDocument {
         if fileType == String(kUTTypeFolder) {
             windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("FolderWindowController")) as? NSWindowController
             
-            if var window = windowController?.window {
+            if let window = windowController?.window {
                 window.titlebarAppearsTransparent = true
                 window.titleVisibility = .hidden
                 window.styleMask.insert(NSWindow.StyleMask.fullSizeContentView)
