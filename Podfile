@@ -9,5 +9,6 @@ target 'swift-pic-studio' do
 
   # Pods for swift-pic-studio
   pod 'ImageScout'
+  pod 'GRDB.swift'
 
 end

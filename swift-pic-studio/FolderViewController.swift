@@ -8,18 +8,26 @@
 
 import Cocoa
 
-class FolderViewController: NSViewController {
+class FolderViewController: NSViewController, ImageCollectionViewDelegate {
     
     var folder: String?
     
     var items: [DesktopFileEntity] = []
     
+    
+    /// 分类面板
+    @IBOutlet weak var catalogueListView: CatalogueListView!
+    
+    /// 缩略图面板
     @IBOutlet weak var collectionView: ImageCollectionView!
+    
+    /// 详情面板
+    @IBOutlet weak var datasheetEditerView: DatasheetEditerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        collectionView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(openFolder), name: NSNotification.Name(rawValue: "openFolder"), object: nil)
     }
     
@@ -29,6 +37,7 @@ class FolderViewController: NSViewController {
         if (folder != nil) {
             loadData(path: folder!)
         }
+        catalogueListView.setup(catalogs: CatalogueEntity.BuildBySummary())
     }
     
     func loadData(path: String) {
@@ -44,6 +53,10 @@ class FolderViewController: NSViewController {
         
         self.items = items as! [DesktopFileEntity]
         collectionView.updateItems(items: self.items)
+    }
+    
+    func didSelectItems(items: Array<DesktopFileEntity>) {
+        datasheetEditerView.setup(newSelectedItems: items)
     }
     
     @objc func openFolder(noti: Notification) {

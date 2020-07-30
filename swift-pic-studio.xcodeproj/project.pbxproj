@@ -18,6 +18,8 @@
 		812DEC3924D061770098FA7F /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3824D061770098FA7F /* DocumentController.swift */; };
 		812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */; };
 		812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */; };
+		8131499A24D312900074925F /* CatalogueEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131499924D312900074925F /* CatalogueEntity.swift */; };
+		8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131499D24D3220A0074925F /* CatalogueCellView.swift */; };
 		8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */; };
 		8158CCD424CDAD7F00BD1240 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD324CDAD7F00BD1240 /* FolderViewController.swift */; };
 		8158CCD624CDAD8100BD1240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8158CCD524CDAD8100BD1240 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		812DEC3824D061770098FA7F /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
 		812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueListView.swift; sourceTree = "<group>"; };
 		812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasheetEditerView.swift; sourceTree = "<group>"; };
+		8131499924D312900074925F /* CatalogueEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueEntity.swift; sourceTree = "<group>"; };
+		8131499D24D3220A0074925F /* CatalogueCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueCellView.swift; sourceTree = "<group>"; };
 		8158CCCE24CDAD7F00BD1240 /* swift-pic-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-pic-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8158CCD324CDAD7F00BD1240 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +94,9 @@
 			children = (
 				8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */,
 				8158CCD524CDAD8100BD1240 /* Assets.xcassets */,
+				8131499D24D3220A0074925F /* CatalogueCellView.swift */,
 				812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */,
+				812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */,
 				278E375324CFCAE800B31697 /* Document.swift */,
 				812DEC3824D061770098FA7F /* DocumentController.swift */,
 				8158CCD324CDAD7F00BD1240 /* FolderViewController.swift */,
@@ -105,7 +111,6 @@
 				8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */,
 				8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */,
 				278E372D24CEAF8D00B31697 /* WorkstationView.swift */,
-				812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */,
 			);
 			path = "swift-pic-studio";
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 				8158CCE924CDBCCB00BD1240 /* DesktopEntity.swift */,
 				8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */,
 				27D1DA0824D284E60049920E /* FastImageSize.swift */,
+				8131499924D312900074925F /* CatalogueEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 			files = (
 				8116EB8624CF3C9300D3D29C /* ImageCollectionToolbar.swift in Sources */,
 				278E373424CEF1A300B31697 /* ImageCollectionFlowLayout.swift in Sources */,
+				8131499A24D312900074925F /* CatalogueEntity.swift in Sources */,
 				278E372E24CEAF8D00B31697 /* WorkstationView.swift in Sources */,
 				8158CCEC24CDCE7A00BD1240 /* ImageParser.swift in Sources */,
 				8158CCF224CE0B9200BD1240 /* ThumbnailImageGridView.swift in Sources */,
@@ -260,6 +267,7 @@
 				8158CCEA24CDBCCB00BD1240 /* DesktopEntity.swift in Sources */,
 				8158CCD424CDAD7F00BD1240 /* FolderViewController.swift in Sources */,
 				278E375424CFCAE800B31697 /* Document.swift in Sources */,
+				8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
 				27D1DA0924D284E60049920E /* FastImageSize.swift in Sources */,
 				812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */,

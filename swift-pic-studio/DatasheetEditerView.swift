@@ -9,11 +9,27 @@
 import Cocoa
 
 class DatasheetEditerView: NSView {
+    
+    var selectedItems: Array<DesktopFileEntity> = []
+    
+    @IBOutlet weak var tabView: NSTabView!
+    /// 分类
+    
+    /// 已选定
+    @IBOutlet weak var coverImageView: NSImageView!
+    @IBOutlet weak var fileNameLabel: NSTextField!
+    @IBOutlet weak var fileSizeLabel: NSTextField!
+    @IBOutlet weak var createDateLabel: NSTextField!
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+    func setup(newSelectedItems:Array<DesktopFileEntity>) {
+        tabView.selectTabViewItem(at: 1)
+        if let last = newSelectedItems.last {
+            coverImageView.image = last.thumbnailImage
+            fileNameLabel.stringValue = last.filename as! String
+            var attrs = last.attrs as! NSDictionary
+            fileSizeLabel.integerValue = Int(attrs.fileSize())
+            createDateLabel.stringValue = attrs.fileCreationDate()?.description as! String
+        }
     }
     
 }

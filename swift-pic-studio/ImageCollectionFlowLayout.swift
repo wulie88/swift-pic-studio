@@ -13,8 +13,20 @@ class ThumbnailImageLayoutAttributes: NSCollectionViewLayoutAttributes {
 }
 
 enum ImageCollectionFlowLayoutType {
-    case ImageCollectionFlowLayoutTypeAutoFit
-    case ImageCollectionFlowLayoutTypeWaterfall
+    case autoFit
+    case waterfall
+}
+
+enum ImageCollectionFlowLayoutSort {
+    case size
+    case modificationDate
+    case creationDate
+    case filename
+}
+
+enum ImageCollectionFlowLayoutOrder {
+    case asc
+    case desc
 }
 
 class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
@@ -26,7 +38,9 @@ class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
     var maxHeight: CGFloat = 0
     var properCols: Int = 3
     let spacing: CGFloat = 10
-    var type: ImageCollectionFlowLayoutType = .ImageCollectionFlowLayoutTypeWaterfall
+    var type: ImageCollectionFlowLayoutType = .waterfall
+    var sort: ImageCollectionFlowLayoutSort = .creationDate
+    var order: ImageCollectionFlowLayoutOrder = .asc
     
     func setup(items: [DesktopFileEntity]) {
         self.items = items
@@ -37,10 +51,28 @@ class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
     }
     
     override func prepare() {
-        if (type == .ImageCollectionFlowLayoutTypeAutoFit) {
+        if (type == .autoFit) {
             clacAutofitLayout()
         } else {
             clacWaterfallLayout()
+        }
+    }
+    
+    func sortByOrder() {
+        
+        self.items!.sort { (a, b) -> Bool in
+            let aAttrs = a.attrs! as NSDictionary
+            let bAttrs = b.attrs! as NSDictionary
+            if (sort == .creationDate) {
+                return  order == .asc ? aAttrs.fileCreationDate()! < bAttrs.fileCreationDate()! : aAttrs.fileCreationDate()! > bAttrs.fileCreationDate()!
+            } else if (sort == .size) {
+                return  order == .asc ? aAttrs.fileSize() < bAttrs.fileSize() : aAttrs.fileSize() > bAttrs.fileSize()
+            } else if (sort == .filename) {
+                let result:ComparisonResult = a.filename!.localizedStandardCompare(b.filename!)
+                return result == .orderedAscending ? order == .asc : order == .desc
+           }
+            
+            return true
         }
     }
     
@@ -55,6 +87,9 @@ class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
         var lastLine:ThumbnailImageGridLine? = nil
         self.lines.removeAll()
         self.cachedAttributes.removeAll()
+        
+        sortByOrder()
+        
         for (_, imageEntity) in self.items!.enumerated() {
             if (lastLine == nil) {
                 lastLine = ThumbnailImageGridLine(rowIndex: lines.count, imageEntity: imageEntity, containerWidth: width, properHeight: properHeight, spacing: spacing)
@@ -103,6 +138,9 @@ class ImageCollectionFlowLayout: NSCollectionViewFlowLayout {
         let properWidth:CGFloat = (width - CGFloat(properCols + 1) * spacing) / CGFloat(properCols)
         self.colsHeight = [CGFloat](repeating: spacing, count: properCols)
         self.cachedAttributes.removeAll()
+        
+        sortByOrder()
+        
         for (index, imageEntity) in self.items!.enumerated() {
             let size = imageEntity.size
             let scaledSize = NSMakeSize(properWidth, size.height / size.width * properWidth)

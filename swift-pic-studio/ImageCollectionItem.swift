@@ -27,6 +27,8 @@ class ImageCollectionItem: NSCollectionViewItem {
     func setImageEntity(imageEntity: DesktopFileEntity) {
         self.imageEntity = imageEntity
         imageView!.image = imageEntity.thumbnailImage
+        imageView!.layer?.borderColor = imageEntity.isSelected ? NSColor.selectedContentBackgroundColor.cgColor : NSColor.lightGray.cgColor
+        self.isSelected = imageEntity.isSelected
         
         imageEntity.addObserver(self, forKeyPath: DesktopFileEntity.ThumbnailImageLoadedKeyPath, options: .new, context: nil)
         imageEntity.load()

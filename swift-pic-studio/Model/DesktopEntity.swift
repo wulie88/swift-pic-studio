@@ -34,14 +34,20 @@ class DesktopFileEntity: DesktopEntity {
     
     var size = CGSize.zero
     var type = ScoutedImageType.unsupported
+    var attrs: [FileAttributeKey : Any]?
+    var filename: String?
     @objc dynamic var image: NSImage?
     @objc dynamic var thumbnailImage: NSImage?
     var loading = false
     
+    // for displaying
+    var isSelected = false
+    
     override init(path: String) {
         super.init(path: path)
         
-        let attrs = try? FileManager.default.attributesOfItem(atPath: path)
+        filename = URL(fileURLWithPath: path).lastPathComponent
+        attrs = try? FileManager.default.attributesOfItem(atPath: path)
         let fileHandle = FileHandle(forReadingAtPath: path)
         if (attrs != nil &&  fileHandle != nil) {
             let header = fileHandle!.readData(ofLength: 2048)
