@@ -12,6 +12,8 @@
 		278E373224CEBAD100B31697 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E373124CEBAD100B31697 /* ImageCollectionView.swift */; };
 		278E373424CEF1A300B31697 /* ImageCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E373324CEF1A300B31697 /* ImageCollectionFlowLayout.swift */; };
 		278E375424CFCAE800B31697 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E375324CFCAE800B31697 /* Document.swift */; };
+		27D1DA0324D274190049920E /* Pods_swift_pic_studio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307EBD430F8FF937187430F7 /* Pods_swift_pic_studio.framework */; };
+		27D1DA0924D284E60049920E /* FastImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1DA0824D284E60049920E /* FastImageSize.swift */; };
 		8116EB8624CF3C9300D3D29C /* ImageCollectionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */; };
 		812DEC3924D061770098FA7F /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3824D061770098FA7F /* DocumentController.swift */; };
 		812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */; };
@@ -24,8 +26,6 @@
 		8158CCEC24CDCE7A00BD1240 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */; };
 		8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */; };
 		8158CCF224CE0B9200BD1240 /* ThumbnailImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */; };
-		81B1298524D1C85F00F23DF8 /* ImageSizeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B1298424D1C85F00F23DF8 /* ImageSizeParser.swift */; };
-		CBE81144B183A911494952D2 /* Pods_swift_pic_studio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307EBD430F8FF937187430F7 /* Pods_swift_pic_studio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +34,7 @@
 		278E373124CEBAD100B31697 /* ImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
 		278E373324CEF1A300B31697 /* ImageCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		278E375324CFCAE800B31697 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		27D1DA0824D284E60049920E /* FastImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastImageSize.swift; sourceTree = "<group>"; };
 		307EBD430F8FF937187430F7 /* Pods_swift_pic_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_pic_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8116EB8524CF3C9300D3D29C /* ImageCollectionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionToolbar.swift; sourceTree = "<group>"; };
 		812DEC3824D061770098FA7F /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageGridCell.swift; sourceTree = "<group>"; };
 		8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageGridView.swift; sourceTree = "<group>"; };
-		81B1298424D1C85F00F23DF8 /* ImageSizeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeParser.swift; sourceTree = "<group>"; };
 		AA646DB1C2609EE594349DD5 /* Pods-swift-pic-studio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-pic-studio.debug.xcconfig"; path = "Target Support Files/Pods-swift-pic-studio/Pods-swift-pic-studio.debug.xcconfig"; sourceTree = "<group>"; };
 		CD95EE7C1F7E18F133FDF744 /* Pods-swift-pic-studio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-pic-studio.release.xcconfig"; path = "Target Support Files/Pods-swift-pic-studio/Pods-swift-pic-studio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBE81144B183A911494952D2 /* Pods_swift_pic_studio.framework in Frameworks */,
+				27D1DA0324D274190049920E /* Pods_swift_pic_studio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +115,7 @@
 			children = (
 				8158CCE924CDBCCB00BD1240 /* DesktopEntity.swift */,
 				8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */,
-				81B1298424D1C85F00F23DF8 /* ImageSizeParser.swift */,
+				27D1DA0824D284E60049920E /* FastImageSize.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,8 +261,8 @@
 				8158CCD424CDAD7F00BD1240 /* FolderViewController.swift in Sources */,
 				278E375424CFCAE800B31697 /* Document.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
+				27D1DA0924D284E60049920E /* FastImageSize.swift in Sources */,
 				812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */,
-				81B1298524D1C85F00F23DF8 /* ImageSizeParser.swift in Sources */,
 				812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */,
 				812DEC3924D061770098FA7F /* DocumentController.swift in Sources */,
 				8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */,
