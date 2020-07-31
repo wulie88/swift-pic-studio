@@ -18,6 +18,7 @@
 		812DEC3924D061770098FA7F /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3824D061770098FA7F /* DocumentController.swift */; };
 		812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */; };
 		812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */; };
+		813090AD24D49D96002F2BC9 /* EditerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813090AC24D49D96002F2BC9 /* EditerViewController.swift */; };
 		8131499A24D312900074925F /* CatalogueEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131499924D312900074925F /* CatalogueEntity.swift */; };
 		8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131499D24D3220A0074925F /* CatalogueCellView.swift */; };
 		8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		812DEC3824D061770098FA7F /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
 		812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueListView.swift; sourceTree = "<group>"; };
 		812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasheetEditerView.swift; sourceTree = "<group>"; };
+		813090AC24D49D96002F2BC9 /* EditerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditerViewController.swift; sourceTree = "<group>"; };
 		8131499924D312900074925F /* CatalogueEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueEntity.swift; sourceTree = "<group>"; };
 		8131499D24D3220A0074925F /* CatalogueCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueCellView.swift; sourceTree = "<group>"; };
 		8158CCCE24CDAD7F00BD1240 /* swift-pic-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-pic-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */,
 				278E375324CFCAE800B31697 /* Document.swift */,
 				812DEC3824D061770098FA7F /* DocumentController.swift */,
+				813090AC24D49D96002F2BC9 /* EditerViewController.swift */,
 				8158CCD324CDAD7F00BD1240 /* FolderViewController.swift */,
 				278E373324CEF1A300B31697 /* ImageCollectionFlowLayout.swift */,
 				278E372F24CEB9A900B31697 /* ImageCollectionItem.swift */,
@@ -269,6 +272,7 @@
 				278E375424CFCAE800B31697 /* Document.swift in Sources */,
 				8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
+				813090AD24D49D96002F2BC9 /* EditerViewController.swift in Sources */,
 				27D1DA0924D284E60049920E /* FastImageSize.swift in Sources */,
 				812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */,
 				812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */,

@@ -11,10 +11,14 @@ import Cocoa
 protocol ImageCollectionViewDelegate : NSObjectProtocol {
     
     /// 选择了
-    func didSelectItems(items: Array<DesktopFileEntity>)
+    func updateSelectItems(items: Array<DesktopFileEntity>)
+    
+    func presentImageEditer(items: Array<DesktopFileEntity>, currentIndex: Int, sender: NSView)
 }
 
-class ImageCollectionView: NSView {
+class ImageCollectionView: NSView, ImageCollectionItemDelegate {
+    
+    var isHoldCommandKey = false
 
     var flowLayout: ImageCollectionFlowLayout?
     
@@ -33,17 +37,41 @@ class ImageCollectionView: NSView {
     func updateItems(items: [DesktopFileEntity]) {
         flowLayout = ImageCollectionFlowLayout()
         flowLayout!.setup(items: items)
+        
         collectionView.collectionViewLayout = flowLayout
+        
         toobar.setup(type: flowLayout!.type)
         toobar.delegate = self
-        
-        self.needsLayout = true
     }
     
     override func layout() {
         super.layout()
         
+        collectionView.backgroundView = nil
+        collectionView.backgroundColors = [NSColor.clear]
+        
         collectionView.reloadData()
+    }
+    
+    func notifySelectItemsDidUpdate() {
+        let selectionIndexPaths = collectionView.selectionIndexPaths
+        var items: [DesktopFileEntity] = []
+        selectionIndexPaths.forEach { (indexPath) in
+            let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
+            items.append(imageEntity!)
+        }
+        delegate?.updateSelectItems(items: items)
+    }
+    
+    func itemDidDoubleClick(imageEntity: DesktopFileEntity, indexPath: IndexPath) {
+        var items: [DesktopFileEntity] = []
+        flowLayout?.cachedAttributes.forEach({ (attrs) in
+            items.append(attrs.imageEntity!)
+        })
+        guard let item = collectionView.item(at: indexPath) as? ImageCollectionItem else {
+            return
+        }
+        delegate?.presentImageEditer(items: items, currentIndex: indexPath.item, sender: item.view)
     }
 }
 
@@ -59,6 +87,8 @@ extension ImageCollectionView : NSCollectionViewDataSource {
         if (imageEntity != nil) {
             item.setImageEntity(imageEntity: imageEntity!)
         }
+        item.delegate = self
+        item.indexPath = indexPath
         
         return item
     }
@@ -76,43 +106,27 @@ extension ImageCollectionView : NSCollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        print("didSelectItemsAt", indexPaths)
         indexPaths.forEach { (indexPath) in
-            var selected = true
-            if selectedIndexPaths.contains(indexPath) {
-                selected = false
-                selectedIndexPaths.removeAll { (_indexPath) -> Bool in
-                    return _indexPath == indexPath
-                }
-                collectionView.deselectItems(at: Set([indexPath]))
-            } else {
-                selectedIndexPaths.append(indexPath)
+            guard let item = collectionView.item(at: indexPath) as? ImageCollectionItem else {
+                return
             }
-            
-            let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
-            if (imageEntity != nil) {
-                imageEntity?.isSelected = selected
-            }
+            item.isSelected = true
         }
-        collectionView.reloadItems(at: indexPaths)
         
-        var items: Array<DesktopFileEntity> = []
-        selectedIndexPaths.forEach { (indexPath) in
-            let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
-            if (imageEntity != nil) {
-                items.append(imageEntity!)
-            }
-        }
-        delegate?.didSelectItems(items: items)
+        notifySelectItemsDidUpdate()
     }
 
     func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+        print("didDeselectItemsAt", indexPaths)
         indexPaths.forEach { (indexPath) in
-            let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
-            if (imageEntity != nil) {
-                imageEntity?.isSelected = false
+            guard let item = collectionView.item(at: indexPath) as? ImageCollectionItem else {
+                return
             }
+            item.isSelected = false
         }
-        collectionView.reloadItems(at: indexPaths)
+        
+        notifySelectItemsDidUpdate()
     }
 }
 

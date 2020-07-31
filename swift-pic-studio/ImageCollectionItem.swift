@@ -7,10 +7,38 @@
 //
 
 import Cocoa
+
+protocol ImageCollectionItemDelegate : NSObjectProtocol {
+    
+    func itemDidDoubleClick(imageEntity: DesktopFileEntity, indexPath: IndexPath)
+}
      
 class ImageCollectionItem: NSCollectionViewItem {
     
     weak var imageEntity: DesktopFileEntity?
+    var indexPath: IndexPath?
+    
+    weak open var delegate: ImageCollectionItemDelegate?
+    
+    let normalBorderColor = NSColor.init(white: 1, alpha: 0.1).cgColor
+    let selectedBorderColor = NSColor.init(white: 1, alpha: 1).cgColor
+    
+    dynamic override var isSelected: Bool {
+        get { return super.isSelected }
+        set {
+            super.isSelected = newValue
+            view.needsLayout = true
+            imageEntity?.isSelected = newValue
+        }
+    }
+    
+    @IBAction func doubleClick(sender: Any) {
+        guard (imageEntity != nil && indexPath != nil) else {
+            return
+        }
+        
+        delegate?.itemDidDoubleClick(imageEntity: imageEntity!, indexPath: indexPath!)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +48,22 @@ class ImageCollectionItem: NSCollectionViewItem {
         imageView!.imageScaling = .scaleProportionallyDown
         imageView!.layer?.cornerRadius = 7
         imageView!.layer?.masksToBounds = true
-        imageView!.layer?.borderColor = NSColor.lightGray.cgColor
-        imageView!.layer?.borderWidth = 1
+        imageView!.layer?.borderColor = normalBorderColor
+        imageView!.layer?.borderWidth = 2
     }
     
     func setImageEntity(imageEntity: DesktopFileEntity) {
         self.imageEntity = imageEntity
         imageView!.image = imageEntity.thumbnailImage
-        imageView!.layer?.borderColor = imageEntity.isSelected ? NSColor.selectedContentBackgroundColor.cgColor : NSColor.lightGray.cgColor
         self.isSelected = imageEntity.isSelected
         
         imageEntity.addObserver(self, forKeyPath: DesktopFileEntity.ThumbnailImageLoadedKeyPath, options: .new, context: nil)
         imageEntity.load()
+    }
+    
+    override func viewWillLayout() {
+        super.viewWillLayout()
+        imageView!.layer?.borderColor = self.isSelected ? selectedBorderColor : normalBorderColor
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

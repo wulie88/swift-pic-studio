@@ -55,7 +55,14 @@ class FolderViewController: NSViewController, ImageCollectionViewDelegate {
         collectionView.updateItems(items: self.items)
     }
     
-    func didSelectItems(items: Array<DesktopFileEntity>) {
+    func presentImageEditer(items: [DesktopFileEntity], currentIndex: Int, sender: NSView) {
+        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("EditerViewController"))) as! EditerViewController
+        vc.setup(items: items, currentIndex: currentIndex)
+        
+        presentAsModalWindow(vc)
+    }
+    
+    func updateSelectItems(items: Array<DesktopFileEntity>) {
         datasheetEditerView.setup(newSelectedItems: items)
     }
     
@@ -63,7 +70,7 @@ class FolderViewController: NSViewController, ImageCollectionViewDelegate {
         let path = noti.object as! String
         
         
-        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("ViewController"))) as! FolderViewController
+        let vc = (NSStoryboard.main?.instantiateController(withIdentifier:NSStoryboard.SceneIdentifier("FolderViewController"))) as! FolderViewController
         vc.folder = path
         
         self.presentAsModalWindow(vc)

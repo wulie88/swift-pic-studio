@@ -23,13 +23,17 @@ class DatasheetEditerView: NSView {
 
     func setup(newSelectedItems:Array<DesktopFileEntity>) {
         tabView.selectTabViewItem(at: 1)
-        if let last = newSelectedItems.last {
-            coverImageView.image = last.thumbnailImage
-            fileNameLabel.stringValue = last.filename as! String
-            var attrs = last.attrs as! NSDictionary
-            fileSizeLabel.integerValue = Int(attrs.fileSize())
-            createDateLabel.stringValue = attrs.fileCreationDate()?.description as! String
+        
+        guard let last = newSelectedItems.last else {
+            return
         }
+        
+        coverImageView.image = last.thumbnailImage
+        fileNameLabel.stringValue = last.filename as! String
+        
+        var attrs = last.attrs as! NSDictionary
+        fileSizeLabel.integerValue = Int(attrs.fileSize())
+        createDateLabel.stringValue = attrs.fileCreationDate()?.description as! String
     }
     
 }

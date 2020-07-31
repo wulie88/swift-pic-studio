@@ -12,6 +12,7 @@ class WorkstationView: NSStackView {
     
     var filePath: String?
     let expectedExt = ["kext"]
+    let bgImage = NSImage(named: "bg")
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -47,7 +48,18 @@ class WorkstationView: NSStackView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
-        // Drawing code here.
+        bgImage?.draw(in: dirtyRect)
+//        //获取原始图片
+//        originalImage?.cgImage(forProposedRect: <#T##UnsafeMutablePointer<NSRect>?#>, context: <#T##NSGraphicsContext?#>, hints: <#T##[NSImageRep.HintKey : Any]?#>)
+//        let inputImage = CIImage(image: originalImage)
+//        //使用高斯模糊滤镜
+//        let filter = CIFilter(name: "CIGaussianBlur")!
+//        filter.setValue(inputImage, forKey:kCIInputImageKey)
+//        //设置模糊半径值（越大越模糊）
+//        filter.setValue(10, forKey: kCIInputRadiusKey)
+//        let outputCIImage = filter.outputImage!
+//        let rect = CGRect(origin: CGPoint.zero, size: originalImage.size)
+        
     }
     
 }
