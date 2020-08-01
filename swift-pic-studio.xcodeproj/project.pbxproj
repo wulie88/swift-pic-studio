@@ -29,6 +29,8 @@
 		8158CCEC24CDCE7A00BD1240 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */; };
 		8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */; };
 		8158CCF224CE0B9200BD1240 /* ThumbnailImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */; };
+		81FF199A24D5E97300E9EE0C /* NSImage+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF199924D5E97300E9EE0C /* NSImage+CGImage.swift */; };
+		81FF199C24D5F38300E9EE0C /* CatalogueTitledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF199B24D5F38300E9EE0C /* CatalogueTitledCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageGridCell.swift; sourceTree = "<group>"; };
 		8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageGridView.swift; sourceTree = "<group>"; };
+		81FF199924D5E97300E9EE0C /* NSImage+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+CGImage.swift"; sourceTree = "<group>"; };
+		81FF199B24D5F38300E9EE0C /* CatalogueTitledCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueTitledCellView.swift; sourceTree = "<group>"; };
 		AA646DB1C2609EE594349DD5 /* Pods-swift-pic-studio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-pic-studio.debug.xcconfig"; path = "Target Support Files/Pods-swift-pic-studio/Pods-swift-pic-studio.debug.xcconfig"; sourceTree = "<group>"; };
 		CD95EE7C1F7E18F133FDF744 /* Pods-swift-pic-studio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-pic-studio.release.xcconfig"; path = "Target Support Files/Pods-swift-pic-studio/Pods-swift-pic-studio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +102,7 @@
 				8158CCD524CDAD8100BD1240 /* Assets.xcassets */,
 				8131499D24D3220A0074925F /* CatalogueCellView.swift */,
 				812DEC3A24D0A48A0098FA7F /* CatalogueListView.swift */,
+				81FF199B24D5F38300E9EE0C /* CatalogueTitledCellView.swift */,
 				812DEC3C24D0AA060098FA7F /* DatasheetEditerView.swift */,
 				278E375324CFCAE800B31697 /* Document.swift */,
 				812DEC3824D061770098FA7F /* DocumentController.swift */,
@@ -110,6 +115,7 @@
 				8158CCDA24CDAD8100BD1240 /* Info.plist */,
 				8158CCD724CDAD8100BD1240 /* Main.storyboard */,
 				8158CCE824CDBCA300BD1240 /* Model */,
+				81FF199924D5E97300E9EE0C /* NSImage+CGImage.swift */,
 				8158CCDB24CDAD8100BD1240 /* swift_pic_studio.entitlements */,
 				8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */,
 				8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */,
@@ -272,12 +278,14 @@
 				278E375424CFCAE800B31697 /* Document.swift in Sources */,
 				8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
+				81FF199A24D5E97300E9EE0C /* NSImage+CGImage.swift in Sources */,
 				813090AD24D49D96002F2BC9 /* EditerViewController.swift in Sources */,
 				27D1DA0924D284E60049920E /* FastImageSize.swift in Sources */,
 				812DEC3D24D0AA060098FA7F /* DatasheetEditerView.swift in Sources */,
 				812DEC3B24D0A48A0098FA7F /* CatalogueListView.swift in Sources */,
 				812DEC3924D061770098FA7F /* DocumentController.swift in Sources */,
 				8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */,
+				81FF199C24D5F38300E9EE0C /* CatalogueTitledCellView.swift in Sources */,
 				278E373224CEBAD100B31697 /* ImageCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

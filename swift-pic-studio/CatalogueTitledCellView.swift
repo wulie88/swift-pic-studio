@@ -1,22 +1,25 @@
 //
-//  CatalogueCellView.swift
+//  CatalogueTitledCellView.swift
 //  swift-pic-studio
 //
-//  Created by boss on 2020/7/30.
+//  Created by boss on 2020/8/2.
 //  Copyright © 2020 cnnl. All rights reserved.
 //
 
 import Cocoa
 
-class CatalogueCellView: NSTableCellView {
+class CatalogueTitledCellView: NSTableCellView {
     
     @IBOutlet weak var expandButton: NSButton!
-    @IBOutlet weak var iconView: NSImageView!
-    @IBOutlet weak var countLabel: NSTextField!
 
     func setCatalogueEntity(entity: CatalogueEntity) {
-        expandButton.isHidden = true
         self.textField!.stringValue = entity.title
+    }
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+
+        // Drawing code here.
     }
     
 }

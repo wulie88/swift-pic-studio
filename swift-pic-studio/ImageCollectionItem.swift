@@ -20,7 +20,9 @@ class ImageCollectionItem: NSCollectionViewItem {
     
     weak open var delegate: ImageCollectionItemDelegate?
     
-    let normalBorderColor = NSColor.init(white: 1, alpha: 0.1).cgColor
+    @IBOutlet weak var clickGestureRecognizer: NSClickGestureRecognizer!
+    
+    let normalBorderColor = NSColor.clear.cgColor
     let selectedBorderColor = NSColor.init(white: 1, alpha: 1).cgColor
     
     dynamic override var isSelected: Bool {
@@ -44,9 +46,11 @@ class ImageCollectionItem: NSCollectionViewItem {
         super.viewDidLoad()
         // Do view setup here.
         
+        clickGestureRecognizer.delaysPrimaryMouseButtonEvents = false
+        
         imageView!.imageAlignment = .alignCenter
         imageView!.imageScaling = .scaleProportionallyDown
-        imageView!.layer?.cornerRadius = 7
+        imageView!.layer?.cornerRadius = 6
         imageView!.layer?.masksToBounds = true
         imageView!.layer?.borderColor = normalBorderColor
         imageView!.layer?.borderWidth = 2

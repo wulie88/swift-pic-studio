@@ -17,11 +17,23 @@ class EditerViewController: NSViewController {
     func setup(items: [DesktopFileEntity], currentIndex: Int) {
         currentEntity = items[currentIndex]
     }
+    
+    override func loadView() {
+        super.loadView()
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        
         imageView.image = currentEntity!.thumbnailImage
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        view.window?.setContentSize(NSSize(width: 1000, height: 800))
     }
     
 }

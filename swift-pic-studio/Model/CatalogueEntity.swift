@@ -22,13 +22,26 @@ class CatalogueEntity: NSObject {
     // 图片数量
     var numbers: Int = 0
     
+    // 是否不能添加
+    var isFreezing = false
+    
+    // 是否展开
+    var isExpandable = false
+    
+    // 是否标题
+    var isTitled = false
+    
+    // 是否智能文件夹
+    var isSmart = false
+    
     // 子元素
     var children: [CatalogueEntity] = []
     
-    init(name:String, title: String, icon: String = "default") {
+    init(name:String, title: String, icon: String = "default", isFreezing: Bool = true) {
         self.name = name
         self.title = title
         self.icon = icon
+        self.isFreezing = isFreezing
     }
     
     
@@ -40,6 +53,15 @@ class CatalogueEntity: NSObject {
         let forTags = CatalogueEntity(name: "tags", title: "标签管理")
         let forTrash = CatalogueEntity(name: "trash", title: "垃圾桶")
         
-        return [forAll, forUncatalog, forUntaged, forRandom, forTags, forTrash]
+        
+        let forSmart = CatalogueEntity(name: "smart", title: "智能文件夹")
+        forSmart.isFreezing = false
+        forSmart.isTitled = true
+        
+        let forFolders = CatalogueEntity(name: "folders", title: "文件夹")
+        forFolders.isFreezing = false
+        forFolders.isTitled = true
+        
+        return [forAll, forUncatalog, forUntaged, forRandom, forTags, forTrash, forSmart, forFolders]
     }
 }
