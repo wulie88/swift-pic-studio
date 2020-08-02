@@ -8,15 +8,27 @@
 
 import Cocoa
 
+protocol CatalogueCellViewDelegate : NSObjectProtocol {
+    
+    func cell(cell:CatalogueTitledCellView, titleFieldDidChange textField: NSTextField)
+}
+
 class CatalogueCellView: NSTableCellView {
     
-    @IBOutlet weak var expandButton: NSButton!
+    weak var entity: CatalogueEntity?
     @IBOutlet weak var iconView: NSImageView!
     @IBOutlet weak var countLabel: NSTextField!
+    var delegate: CatalogueCellViewDelegate?
 
-    func setCatalogueEntity(entity: CatalogueEntity) {
-        expandButton.isHidden = true
+    func setCatalogueEntity(_ entity: CatalogueEntity) {
+        self.entity = entity
         self.textField!.stringValue = entity.title
+        if (entity.isEditing) {
+            self.textField!.becomeFirstResponder()
+        }
     }
     
+    @IBAction func textFieldDidChange(textField :NSTextField) {
+        entity?.title = textField.stringValue
+    }
 }

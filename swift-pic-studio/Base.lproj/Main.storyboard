@@ -736,66 +736,29 @@
                                                                     </textFieldCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     <prototypeCellViews>
-                                                                        <tableCellView identifier="CatalogueTitledCellView" id="Kuz-F0-WSj" customClass="CatalogueTitledCellView" customModule="swift_pic_studio" customModuleProvider="target">
+                                                                        <tableCellView identifier="CatalogueCellView" id="llf-WR-G7g" customClass="CatalogueCellView" customModule="swift_pic_studio" customModuleProvider="target">
                                                                             <rect key="frame" x="1" y="1" width="237" height="44"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="ibi-RJ-m9j">
-                                                                                    <rect key="frame" x="4" y="15" width="13" height="13"/>
-                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                                    <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="etH-79-8PP">
-                                                                                        <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
-                                                                                        <font key="font" metaFont="system"/>
-                                                                                    </buttonCell>
-                                                                                </button>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-6P-ytC">
-                                                                                    <rect key="frame" x="19" y="13" width="237" height="17"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="CvD-Le-Kya">
-                                                                                        <font key="font" metaFont="system"/>
-                                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                    </textFieldCell>
-                                                                                </textField>
-                                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-y0-fYe">
-                                                                                    <rect key="frame" x="200" y="12" width="13" height="19"/>
-                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="icon_add" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="FSU-Wx-EAE">
-                                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="system"/>
-                                                                                    </buttonCell>
-                                                                                </button>
-                                                                            </subviews>
-                                                                            <connections>
-                                                                                <outlet property="expandButton" destination="ibi-RJ-m9j" id="xn0-DE-p4a"/>
-                                                                                <outlet property="textField" destination="Teb-6P-ytC" id="Nun-zA-V8r"/>
-                                                                            </connections>
-                                                                        </tableCellView>
-                                                                        <tableCellView identifier="CatalogueCellView" id="llf-WR-G7g" customClass="CatalogueCellView" customModule="swift_pic_studio" customModuleProvider="target">
-                                                                            <rect key="frame" x="1" y="47" width="237" height="44"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                            <subviews>
-                                                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-K8-C11">
-                                                                                    <rect key="frame" x="3" y="23" width="13" height="13"/>
-                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                                    <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Z8-tt-IJu">
-                                                                                        <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
-                                                                                        <font key="font" metaFont="system"/>
-                                                                                    </buttonCell>
-                                                                                </button>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="loD-eU-dYU">
                                                                                     <rect key="frame" x="22" y="21" width="17" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="I40-CA-Qfo"/>
+                                                                                    <connections>
+                                                                                        <outlet property="menu" destination="cB7-cf-9yw" id="dod-2C-3nH"/>
+                                                                                    </connections>
                                                                                 </imageView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5X-i6-Ylx">
                                                                                     <rect key="frame" x="39" y="21" width="175" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="6Fv-M3-1ee">
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="6Fv-M3-1ee">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
+                                                                                    <connections>
+                                                                                        <action selector="textFieldDidChangeWithTextField:" target="llf-WR-G7g" id="Cre-YB-EOH"/>
+                                                                                    </connections>
                                                                                 </textField>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vDL-gp-vdL">
                                                                                     <rect key="frame" x="179" y="22" width="37" height="16"/>
@@ -809,10 +772,38 @@
                                                                             </subviews>
                                                                             <connections>
                                                                                 <outlet property="countLabel" destination="vDL-gp-vdL" id="wsu-Cb-1UM"/>
-                                                                                <outlet property="expandButton" destination="w0a-K8-C11" id="A4m-3k-HTw"/>
                                                                                 <outlet property="iconView" destination="loD-eU-dYU" id="7fX-bQ-dlN"/>
                                                                                 <outlet property="imageView" destination="loD-eU-dYU" id="ldu-r8-pF6"/>
                                                                                 <outlet property="textField" destination="q5X-i6-Ylx" id="q6C-VT-F3G"/>
+                                                                            </connections>
+                                                                        </tableCellView>
+                                                                        <tableCellView identifier="CatalogueTitledCellView" id="Kuz-F0-WSj" customClass="CatalogueTitledCellView" customModule="swift_pic_studio" customModuleProvider="target">
+                                                                            <rect key="frame" x="1" y="47" width="237" height="44"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                            <subviews>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-6P-ytC">
+                                                                                    <rect key="frame" x="19" y="13" width="237" height="17"/>
+                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="CvD-Le-Kya">
+                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-y0-fYe">
+                                                                                    <rect key="frame" x="200" y="12" width="13" height="19"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="icon_add" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="FSU-Wx-EAE">
+                                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                        <font key="font" metaFont="system"/>
+                                                                                    </buttonCell>
+                                                                                    <connections>
+                                                                                        <action selector="addButtonDidClickWithButton:" target="Kuz-F0-WSj" id="zgZ-dv-gUC"/>
+                                                                                    </connections>
+                                                                                </button>
+                                                                            </subviews>
+                                                                            <connections>
+                                                                                <outlet property="textField" destination="Teb-6P-ytC" id="Nun-zA-V8r"/>
                                                                             </connections>
                                                                         </tableCellView>
                                                                     </prototypeCellViews>
@@ -1220,6 +1211,47 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu identifier="CatalogueCellViewMenu" id="cB7-cf-9yw">
+                    <items>
+                        <menuItem title="新增文件夹" id="teD-43-WFT">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="新增子文件夹" id="9w9-r9-tFn">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="移动文件夹" id="nA0-ua-1kK">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="KcV-Iu-iBE"/>
+                        <menuItem title="重命名" id="NZ5-Dd-oR2">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="设置自动标签" id="GAD-J0-kYM">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="lU1-Dd-vG8"/>
+                        <menuItem title="展开/收起文件夹" id="RmO-4U-mvM">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="展开/收起同层级文件夹" id="gci-61-kY7">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="展开/收起所有文件夹" id="tR8-Y8-DPJ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="5tI-OF-DoT"/>
+                        <menuItem title="导出文件..." id="puL-HV-DQ8">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="显示所有子文件夹内容" id="Rgr-AH-POd">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="4yI-gb-vFG"/>
+                        <menuItem title="删除文件夹" id="C01-sl-NaY">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="76" y="1036"/>
         </scene>
@@ -1243,12 +1275,15 @@
                             <constraint firstItem="DVB-Gn-tZg" firstAttribute="leading" secondItem="Ag0-bl-Cp0" secondAttribute="leading" id="heR-oM-KHl"/>
                         </constraints>
                         <gestureRecognizers>
-                            <clickGestureRecognizer numberOfClicksRequired="2" id="dd4-sb-g7d">
+                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="2" id="dd4-sb-g7d">
                                 <connections>
                                     <action selector="doubleClickWithSender:" target="cXv-U9-IsS" id="pUE-11-yw2"/>
                                 </connections>
                             </clickGestureRecognizer>
                         </gestureRecognizers>
+                        <connections>
+                            <outlet property="menu" destination="ih3-QA-wfA" id="XfO-gd-OJO"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="clickGestureRecognizer" destination="dd4-sb-g7d" id="1QU-K7-jiN"/>
@@ -1256,6 +1291,16 @@
                     </connections>
                 </collectionViewItem>
                 <customObject id="oty-oY-phV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="ih3-QA-wfA">
+                    <items>
+                        <menuItem title="从文件夹中移除" id="FQs-q7-a0e">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="丢到垃圾桶" id="LEq-lX-hWZ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-235" y="941"/>
         </scene>

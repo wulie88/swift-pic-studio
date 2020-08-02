@@ -39,6 +39,8 @@ class ImageCollectionView: NSView, ImageCollectionItemDelegate {
         flowLayout!.setup(items: items)
         
         collectionView.collectionViewLayout = flowLayout
+        collectionView.setDraggingSourceOperationMask(.link, forLocal: true)
+        collectionView.registerForDraggedTypes([.png])
         
         toobar.setup(type: flowLayout!.type)
         toobar.delegate = self
@@ -91,6 +93,12 @@ extension ImageCollectionView : NSCollectionViewDataSource {
         item.indexPath = indexPath
         
         return item
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt index: Int) -> NSPasteboardWriting? {
+        let indexPath: IndexPath = IndexPath(item: index, section: 0)
+        let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
+        return imageEntity?.thumbnailImage
     }
 }
 

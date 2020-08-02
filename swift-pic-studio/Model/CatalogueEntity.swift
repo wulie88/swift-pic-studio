@@ -9,6 +9,14 @@
 import Cocoa
 
 class CatalogueEntity: NSObject {
+    
+    weak var perent: CatalogueEntity?
+    
+    // 层级
+    var leaf: Int = 0
+    
+    // 层级中的序号
+    var indexInLeaf: Int = 0
 
     // 内部名称
     var name: String
@@ -35,7 +43,21 @@ class CatalogueEntity: NSObject {
     var isSmart = false
     
     // 子元素
-    var children: [CatalogueEntity] = []
+    var _children: [CatalogueEntity] = []
+    var children: [CatalogueEntity] {
+        get {
+            return _children
+        }
+    }
+    
+    // 是否是编辑中
+    var isEditing = false
+    
+    var indentifier: String {
+        get {
+            String(format: "%d-%d", leaf, indexInLeaf)
+        }
+    }
     
     init(name:String, title: String, icon: String = "default", isFreezing: Bool = true) {
         self.name = name
@@ -44,6 +66,12 @@ class CatalogueEntity: NSObject {
         self.isFreezing = isFreezing
     }
     
+    func insert(child entity:CatalogueEntity, at i: Int) {
+        entity.perent = self
+        entity.leaf = self.leaf + 1
+        entity.indexInLeaf = _children.count
+        _children.insert(entity, at: i)
+    }
     
     static func BuildBySummary() -> [CatalogueEntity] {
         let forAll = CatalogueEntity(name: "all", title: "全部")

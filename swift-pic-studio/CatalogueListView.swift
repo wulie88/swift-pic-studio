@@ -29,6 +29,8 @@ class CatalogueListView: NSView {
 //        layer?.shadowColor = NSColor.white.cgColor
 //        layer?.shadowOffset = NSMakeSize(-3, -3)
         outlineView.backgroundColor = NSColor.clear
+//        outlineView.setDraggingSourceOperationMask(.move, forLocal: false)
+//        outlineView.registerForDraggedTypes([.string])
         
         outlineView.reloadData()
     }
@@ -68,6 +70,30 @@ extension CatalogueListView : NSOutlineViewDataSource {
         let entity = item as? CatalogueEntity
         return entity?.isExpandable ?? false
     }
+    
+    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
+        let entity = item as! CatalogueEntity
+        if entity.leaf == 0 {
+            return nil
+        }
+        
+        return entity.indentifier as NSString
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
+        guard let entity = item as! CatalogueEntity? else {
+            return .every
+        }
+        
+        print("validateDrop", entity.name, index)
+        return .move
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
+        let entity = item as? CatalogueEntity
+        print("acceptDrop", entity?.name ?? "", index)
+        return false
+    }
 }
 
 extension CatalogueListView : NSOutlineViewDelegate {
@@ -79,7 +105,8 @@ extension CatalogueListView : NSOutlineViewDelegate {
                 return nil
             }
             
-            cellView.setCatalogueEntity(entity: entity)
+            cellView.setCatalogueEntity(entity)
+            cellView.delegate = self
             
             return cellView
         } else {
@@ -87,7 +114,8 @@ extension CatalogueListView : NSOutlineViewDelegate {
                 return nil
             }
             
-            cellView.setCatalogueEntity(entity: entity)
+            cellView.setCatalogueEntity(entity)
+            cellView.delegate = self
             
             return cellView
         }
@@ -99,6 +127,31 @@ extension CatalogueListView : NSOutlineViewDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        return 44
+        let entity = item as! CatalogueEntity
+        return entity.isTitled ? 44 : 30
     }
+}
+
+extension CatalogueListView : CatalogueTitledCellViewDelegate {
+    
+    func cell(cell: CatalogueTitledCellView, addButtonDidClick button: NSButton) {
+        let item = cell.entity!
+        let newItem = CatalogueEntity(name: "_", title: "新项目")
+        newItem.isEditing = true
+        item.insert(child: newItem, at: 0)
+        let indexSet = IndexSet([0])
+        outlineView.insertItems(at: indexSet, inParent: item, withAnimation: .slideUp)
+        outlineView.expandItem(item)
+    }
+}
+
+extension CatalogueListView : CatalogueCellViewDelegate {
+    
+    func cell(cell: CatalogueTitledCellView, titleFieldDidChange textField: NSTextField) {
+        
+    }
+}
+
+extension CatalogueListView : NSMenuDelegate {
+    
 }
