@@ -23,9 +23,10 @@ class CatalogueCellView: NSTableCellView {
     func setCatalogueEntity(_ entity: CatalogueEntity) {
         self.entity = entity
         self.textField!.stringValue = entity.title
-        if (entity.isEditing) {
-            self.textField!.becomeFirstResponder()
-        }
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        return textField?.becomeFirstResponder() ?? false
     }
     
     @IBAction func textFieldDidChange(textField :NSTextField) {

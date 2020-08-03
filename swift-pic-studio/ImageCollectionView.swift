@@ -95,11 +95,17 @@ extension ImageCollectionView : NSCollectionViewDataSource {
         return item
     }
     
+    // MARK: Drag and drop
+    
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt index: Int) -> NSPasteboardWriting? {
         let indexPath: IndexPath = IndexPath(item: index, section: 0)
         let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
         return imageEntity?.thumbnailImage
     }
+    
+    func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
+       return .copy
+   }
 }
 
 extension ImageCollectionView : NSCollectionViewDelegate {

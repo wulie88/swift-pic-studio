@@ -21,6 +21,7 @@
 		813090AD24D49D96002F2BC9 /* EditerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813090AC24D49D96002F2BC9 /* EditerViewController.swift */; };
 		8131499A24D312900074925F /* CatalogueEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131499924D312900074925F /* CatalogueEntity.swift */; };
 		8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131499D24D3220A0074925F /* CatalogueCellView.swift */; };
+		814F174124D83E490035E9E9 /* MenuOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F174024D83E490035E9E9 /* MenuOutlineView.swift */; };
 		8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */; };
 		8158CCD424CDAD7F00BD1240 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCD324CDAD7F00BD1240 /* FolderViewController.swift */; };
 		8158CCD624CDAD8100BD1240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8158CCD524CDAD8100BD1240 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		813090AC24D49D96002F2BC9 /* EditerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditerViewController.swift; sourceTree = "<group>"; };
 		8131499924D312900074925F /* CatalogueEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueEntity.swift; sourceTree = "<group>"; };
 		8131499D24D3220A0074925F /* CatalogueCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueCellView.swift; sourceTree = "<group>"; };
+		814F174024D83E490035E9E9 /* MenuOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOutlineView.swift; sourceTree = "<group>"; };
 		8158CCCE24CDAD7F00BD1240 /* swift-pic-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-pic-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8158CCD324CDAD7F00BD1240 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */,
 				8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */,
 				278E372D24CEAF8D00B31697 /* WorkstationView.swift */,
+				814F174024D83E490035E9E9 /* MenuOutlineView.swift */,
 			);
 			path = "swift-pic-studio";
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				8158CCD424CDAD7F00BD1240 /* FolderViewController.swift in Sources */,
 				278E375424CFCAE800B31697 /* Document.swift in Sources */,
 				8131499E24D3220A0074925F /* CatalogueCellView.swift in Sources */,
+				814F174124D83E490035E9E9 /* MenuOutlineView.swift in Sources */,
 				8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */,
 				81FF199A24D5E97300E9EE0C /* NSImage+CGImage.swift in Sources */,
 				813090AD24D49D96002F2BC9 /* EditerViewController.swift in Sources */,

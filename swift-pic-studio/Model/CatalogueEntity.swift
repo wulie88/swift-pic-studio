@@ -13,10 +13,10 @@ class CatalogueEntity: NSObject {
     weak var perent: CatalogueEntity?
     
     // 层级
-    var leaf: Int = 0
+    var level: Int = 0
     
     // 层级中的序号
-    var indexInLeaf: Int = 0
+    var indexInLevel: Int = 0
 
     // 内部名称
     var name: String
@@ -34,7 +34,7 @@ class CatalogueEntity: NSObject {
     var isFreezing = false
     
     // 是否展开
-    var isExpandable = false
+    var isExpanding = false
     
     // 是否标题
     var isTitled = false
@@ -55,7 +55,7 @@ class CatalogueEntity: NSObject {
     
     var indentifier: String {
         get {
-            String(format: "%d-%d", leaf, indexInLeaf)
+            String(format: "%d-%d", level, indexInLevel)
         }
     }
     
@@ -66,11 +66,20 @@ class CatalogueEntity: NSObject {
         self.isFreezing = isFreezing
     }
     
-    func insert(child entity:CatalogueEntity, at i: Int) {
-        entity.perent = self
-        entity.leaf = self.leaf + 1
-        entity.indexInLeaf = _children.count
-        _children.insert(entity, at: i)
+    func insert(_ child:CatalogueEntity, at i: Int) {
+        child.perent = self
+        child.level = self.level + 1
+        child.indexInLevel = _children.count
+        _children.insert(child, at: i)
+    }
+    
+    func remove(_ child:CatalogueEntity) -> Bool {
+        guard let index = _children.firstIndex(of: child) else {
+            return false
+        }
+        
+        _children.remove(at: index)
+        return true
     }
     
     static func BuildBySummary() -> [CatalogueEntity] {

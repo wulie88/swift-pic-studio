@@ -717,7 +717,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="776"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="Vx3-zK-UO7" id="qFZ-Ru-bRl">
+                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="Vx3-zK-UO7" id="qFZ-Ru-bRl" customClass="MenuOutlineView" customModule="swift_pic_studio" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="776"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -730,7 +730,7 @@
                                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                     </tableHeaderCell>
                                                                     <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="0I7-Ol-Ivq">
-                                                                        <font key="font" metaFont="system"/>
+                                                                        <font key="font" metaFont="label" size="13"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -744,15 +744,12 @@
                                                                                     <rect key="frame" x="22" y="21" width="17" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="I40-CA-Qfo"/>
-                                                                                    <connections>
-                                                                                        <outlet property="menu" destination="cB7-cf-9yw" id="dod-2C-3nH"/>
-                                                                                    </connections>
                                                                                 </imageView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5X-i6-Ylx">
                                                                                     <rect key="frame" x="39" y="21" width="175" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="6Fv-M3-1ee">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -764,7 +761,7 @@
                                                                                     <rect key="frame" x="179" y="22" width="37" height="16"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Ffq-7T-Eoc">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -785,7 +782,7 @@
                                                                                     <rect key="frame" x="19" y="13" width="237" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="CvD-Le-Kya">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -795,7 +792,7 @@
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="icon_add" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="FSU-Wx-EAE">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                     </buttonCell>
                                                                                     <connections>
                                                                                         <action selector="addButtonDidClickWithButton:" target="Kuz-F0-WSj" id="zgZ-dv-gUC"/>
@@ -831,7 +828,9 @@
                                             <constraint firstAttribute="width" constant="260" id="S8h-go-tge"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="folderMenu" destination="cB7-cf-9yw" id="WlH-Dy-esY"/>
                                             <outlet property="outlineView" destination="qFZ-Ru-bRl" id="2Zw-kM-UgP"/>
+                                            <outlet property="smartMenu" destination="axm-Ri-H7m" id="sTh-Uw-Q3m"/>
                                         </connections>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="WOD-kp-yG6" customClass="ImageCollectionView" customModule="swift_pic_studio" customModuleProvider="target">
@@ -885,7 +884,7 @@
                                                         <rect key="frame" x="9.5" y="6" width="71" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectAny" id="zvX-Oa-uag">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                             <segments>
                                                                 <segment image="arrow-lift" width="32"/>
                                                                 <segment image="arrow-right" width="32" tag="1"/>
@@ -902,7 +901,7 @@
                                                             <constraint firstAttribute="width" constant="43" id="r72-q8-veb"/>
                                                         </constraints>
                                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectAny" id="3oc-R4-am5">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                             <segments>
                                                                 <segment image="filter" width="34"/>
                                                             </segments>
@@ -915,7 +914,7 @@
                                                             <constraint firstAttribute="width" constant="131" id="dvU-hV-179"/>
                                                         </constraints>
                                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="搜索" usesSingleLineMode="YES" bezelStyle="round" recentsAutosaveName="keywords" id="Jet-NX-sZu">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </searchFieldCell>
@@ -927,7 +926,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="iBv-VT-Crj"/>
                                                         </constraints>
                                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="AqA-mU-CWm">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                             <segments>
                                                                 <segment label="最新" width="52"/>
                                                                 <segment label="最早" width="52" selected="YES" tag="1"/>
@@ -948,7 +947,7 @@
                                                             <constraint firstAttribute="height" constant="22" id="wCV-2o-yIj"/>
                                                         </constraints>
                                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="wHS-Uh-ph9">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                             <segments>
                                                                 <segment toolTip="自适应布局" image="conditions" width="40" selected="YES"/>
                                                                 <segment toolTip="瀑布流布局" image="descending" width="40" tag="1"/>
@@ -998,7 +997,7 @@
                                         <subviews>
                                             <tabView initialItem="6E2-ha-yrA" translatesAutoresizingMaskIntoConstraints="NO" id="wNq-ip-BTU">
                                                 <rect key="frame" x="3" y="0.0" width="254" height="848"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                                 <tabViewItems>
                                                     <tabViewItem label="分类详情" identifier="" id="6E2-ha-yrA">
                                                         <view key="view" id="DS5-uF-XCu">
@@ -1032,7 +1031,7 @@
                                                                                         <rect key="frame" x="6" y="413" width="202" height="42"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="添加标签" drawsBackground="YES" id="17u-Ho-j4o">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1041,7 +1040,7 @@
                                                                                         <rect key="frame" x="77" y="267" width="133" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="156KB" id="sK5-yN-h3W">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1050,7 +1049,7 @@
                                                                                         <rect key="frame" x="77" y="291" width="133" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="1200 x 800" id="Dp2-Mh-y9C">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1059,7 +1058,7 @@
                                                                                         <rect key="frame" x="77" y="243" width="133" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="2020/07/22 00:41" id="OM2-ej-xC1">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1068,7 +1067,7 @@
                                                                                         <rect key="frame" x="6" y="382" width="202" height="21"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="http://" drawsBackground="YES" id="4G8-6d-dfd">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1077,7 +1076,7 @@
                                                                                         <rect key="frame" x="4" y="349" width="31" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="分类" id="jJ9-ci-SRf">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1086,7 +1085,7 @@
                                                                                         <rect key="frame" x="4" y="315" width="58" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="基本信息" id="ge8-NJ-puM">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1095,7 +1094,7 @@
                                                                                         <rect key="frame" x="4" y="291" width="31" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="尺寸" id="nfa-TT-SQO">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1104,7 +1103,7 @@
                                                                                         <rect key="frame" x="4" y="267" width="58" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="文件大小" id="auF-7Z-Doo">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1113,7 +1112,7 @@
                                                                                         <rect key="frame" x="4" y="241" width="58" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="添加日期" id="kVK-UK-Vun">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1122,7 +1121,7 @@
                                                                                         <rect key="frame" x="6" y="465" width="202" height="26"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="border" alignment="left" placeholderString="文件名" drawsBackground="YES" id="SWI-Wm-WJ9">
-                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <font key="font" metaFont="label" size="13"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -1211,46 +1210,127 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu identifier="CatalogueCellViewMenu" id="cB7-cf-9yw">
+                <menu identifier="SmartMenu" id="axm-Ri-H7m">
+                    <items>
+                        <menuItem title="新建智能文件夹" id="AhS-oK-gcT">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="newSmartWithMenuItem:" target="6Jn-dF-cvt" id="BvF-Fe-sxH"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="重命名" id="TYG-iv-xlG">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="renameSmartWithMenuItem:" target="6Jn-dF-cvt" id="kbv-BG-Un1"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="修改规则" id="ZhC-Km-iFW">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="editSmartWithMenuItem:" target="6Jn-dF-cvt" id="M77-p2-N88"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="克隆" id="O6o-ba-Jjb">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="cloneSmartWithMenuItem:" target="6Jn-dF-cvt" id="jjK-yN-2bH"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="ekm-LC-M5m"/>
+                        <menuItem title="导出文件..." id="XjG-ra-EQE">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="exportSmartWithMenuItem:" target="6Jn-dF-cvt" id="mbk-cE-Bq7"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="QAC-n0-YYi"/>
+                        <menuItem title="删除文件夹" id="YZh-Q1-kva">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="deleteSmartWithMenuItem:" target="6Jn-dF-cvt" id="Aar-lX-jFS"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="6Jn-dF-cvt" id="mws-1w-PIZ"/>
+                    </connections>
+                </menu>
+                <menu identifier="FolderMenu" id="cB7-cf-9yw">
                     <items>
                         <menuItem title="新增文件夹" id="teD-43-WFT">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="newFolderWithMenuItem:" target="6Jn-dF-cvt" id="oos-ZG-whI"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="新增子文件夹" id="9w9-r9-tFn">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="newSubFolderWithMenuItem:" target="6Jn-dF-cvt" id="6ck-oK-6Fa"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="移动文件夹" id="nA0-ua-1kK">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="moveFolderWithMenuItem:" target="6Jn-dF-cvt" id="4EU-AW-KGR"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="KcV-Iu-iBE"/>
                         <menuItem title="重命名" id="NZ5-Dd-oR2">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="renameFolderWithMenuItem:" target="6Jn-dF-cvt" id="Rza-fR-NrR"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="设置自动标签" id="GAD-J0-kYM">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="configTagFolderWithMenuItem:" target="6Jn-dF-cvt" id="1ly-BS-jq6"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="lU1-Dd-vG8"/>
                         <menuItem title="展开/收起文件夹" id="RmO-4U-mvM">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="expandFolderWithMenuItem:" target="6Jn-dF-cvt" id="wOy-MJ-Sc1"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="展开/收起同层级文件夹" id="gci-61-kY7">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="expandChildrenFolderWithMenuItem:" target="6Jn-dF-cvt" id="Lif-AR-ReS"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="展开/收起所有文件夹" id="tR8-Y8-DPJ">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="expandAllFolderWithMenuItem:" target="6Jn-dF-cvt" id="Aa1-nN-BdG"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="5tI-OF-DoT"/>
                         <menuItem title="导出文件..." id="puL-HV-DQ8">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="exportFolderWithMenuItem:" target="6Jn-dF-cvt" id="xfB-Io-8SO"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="显示所有子文件夹内容" id="Rgr-AH-POd">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="showAllContentsWithMenuItem:" target="6Jn-dF-cvt" id="6cO-UI-m9L"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="4yI-gb-vFG"/>
                         <menuItem title="删除文件夹" id="C01-sl-NaY">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="deleteFolderWithMenuItem:" target="6Jn-dF-cvt" id="XAP-ZQ-IsH"/>
+                            </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="delegate" destination="6Jn-dF-cvt" id="LMi-Mr-KUN"/>
+                    </connections>
                 </menu>
             </objects>
             <point key="canvasLocation" x="76" y="1036"/>
@@ -1325,7 +1405,7 @@
                                 <rect key="frame" x="130" y="125" width="190" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="请使用菜单打开文件夹或者文件" id="mbA-eR-c0E">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="label" size="13"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
