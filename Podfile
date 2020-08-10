@@ -8,7 +8,6 @@ target 'swift-pic-studio' do
   use_frameworks!
 
   # Pods for swift-pic-studio
-  pod 'ImageScout'
   pod 'GRDB.swift'
   pod 'lottie-ios'
 end

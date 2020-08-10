@@ -30,8 +30,8 @@ class CatalogueEntity: NSObject {
     // 图片数量
     var numbers: Int = 0
     
-    // 是否不能添加
-    var isFreezing = false
+    // 是否虚拟的
+    var isVirtual = false
     
     // 是否展开
     var isExpanding = false
@@ -42,7 +42,12 @@ class CatalogueEntity: NSObject {
     // 是否智能文件夹
     var isSmart = false
     
-    // 子元素
+    var indentifier: String {
+        get {
+            String(format: "%d-%d", level, indexInLevel)
+        }
+    }
+    
     var _children: [CatalogueEntity] = []
     var children: [CatalogueEntity] {
         get {
@@ -50,20 +55,16 @@ class CatalogueEntity: NSObject {
         }
     }
     
-    // 是否是编辑中
-    var isEditing = false
+    static var _indentifier2entity = Dictionary<String, CatalogueEntity>()
     
-    var indentifier: String {
-        get {
-            String(format: "%d-%d", level, indexInLevel)
-        }
+    static func entity(from indentifier: String) -> CatalogueEntity? {
+        return _indentifier2entity[indentifier]
     }
     
-    init(name:String, title: String, icon: String = "default", isFreezing: Bool = true) {
+    init(name: String, title: String) {
         self.name = name
         self.title = title
-        self.icon = icon
-        self.isFreezing = isFreezing
+        super.init()
     }
     
     func insert(_ child:CatalogueEntity, at i: Int) {
@@ -71,9 +72,11 @@ class CatalogueEntity: NSObject {
         child.level = self.level + 1
         child.indexInLevel = _children.count
         _children.insert(child, at: i)
+        CatalogueEntity._indentifier2entity[indentifier] = child
     }
     
     func remove(_ child:CatalogueEntity) -> Bool {
+        CatalogueEntity._indentifier2entity[child.indentifier] = nil
         guard let index = _children.firstIndex(of: child) else {
             return false
         }
@@ -88,17 +91,21 @@ class CatalogueEntity: NSObject {
         let forUntaged = CatalogueEntity(name: "untaged", title: "未标签")
         let forRandom = CatalogueEntity(name: "random", title: "惊喜组合")
         let forTags = CatalogueEntity(name: "tags", title: "标签管理")
-        let forTrash = CatalogueEntity(name: "trash", title: "垃圾桶")
         
+        forAll.isVirtual = true
+        forUncatalog.isVirtual = true
+        forUntaged.isVirtual = true
+        forRandom.isVirtual = true
+        forTags.isVirtual = true
         
         let forSmart = CatalogueEntity(name: "smart", title: "智能文件夹")
-        forSmart.isFreezing = false
+        forSmart.isVirtual = true
         forSmart.isTitled = true
         
         let forFolders = CatalogueEntity(name: "folders", title: "文件夹")
-        forFolders.isFreezing = false
+        forFolders.isVirtual = false
         forFolders.isTitled = true
         
-        return [forAll, forUncatalog, forUntaged, forRandom, forTags, forTrash, forSmart, forFolders]
+        return [forAll, forUncatalog, forUntaged, forRandom, forTags, forSmart, forFolders]
     }
 }

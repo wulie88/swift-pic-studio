@@ -15,6 +15,7 @@ class CatalogueListView: NSView {
     
     var catalogs: [CatalogueEntity] = []
     var currentCatalog:CatalogueEntity?
+    var selectionIndexPaths: [IndexPath]?
     
     @IBOutlet weak var folderMenu: NSMenu!
     @IBOutlet weak var smartMenu: NSMenu!
@@ -34,8 +35,16 @@ class CatalogueListView: NSView {
 //        layer?.shadowOffset = NSMakeSize(-3, -3)
         outlineView.backgroundColor = NSColor.clear
         outlineView.menuDelegate = self
-        outlineView.setDraggingSourceOperationMask(.move, forLocal: false)
-        outlineView.registerForDraggedTypes([.string, .png])
+        outlineView.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
+        
+        // We are interested in these drag types: our own type (outline row number), and for fileURLs.
+        outlineView.registerForDraggedTypes([
+            .string, // Our internal drag type, the outline view's row number for internal drags.
+            NSPasteboard.PasteboardType.fileURL // To receive file URL drags.
+            ])
+        
+        // Register for drag types coming in, we want to receive file promises from Photos, Mail, Safari, etc.
+        outlineView.registerForDraggedTypes(NSFilePromiseReceiver.readableDraggedTypes.map { NSPasteboard.PasteboardType($0) })
         
         outlineView.reloadData()
     }
@@ -91,34 +100,44 @@ extension CatalogueListView : NSOutlineViewDataSource {
     }
     
     func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
+        var result = NSDragOperation()
+        
+        guard index != -1,     // Don't allow dropping on a child.
+                item != nil    // Make sure we have a valid outline view item to drop on.
+        else {
+            return result
+        }
+        
         guard let entity = item as! CatalogueEntity? else {
-            return .every
+            return result
         }
         
         print("validateDrop", entity.name, index)
-        return .move
+        if entity.level != 0 {
+            result = .move
+        }
+        
+        return result
     }
     
     func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
         let entity = item as? CatalogueEntity
-        print("acceptDrop", entity?.name ?? "", index)
+        print("acceptDrop", entity?.name ?? "", index, info.draggingPasteboard)
         return false
     }
     
-    func outlineViewItemDidExpand(_ notification: Notification) {
-        guard let entity = notification.userInfo?["NSObject"] as? CatalogueEntity else {
-            return
+    // MARK: Expansion
+    
+    func outlineView(_ outlineView: NSOutlineView, itemForPersistentObject object: Any) -> Any? {
+        guard let indentifier: String = object as? String else {
+            return nil
         }
-        
-        entity.isExpanding = true
+        return CatalogueEntity.entity(from: indentifier)
     }
     
-    func outlineViewItemDidCollapse(_ notification: Notification) {
-        guard let entity = notification.userInfo?["NSObject"] as? CatalogueEntity else {
-            return
-        }
-        
-        entity.isExpanding = false
+    func outlineView(_ outlineView: NSOutlineView, persistentObjectForItem item: Any?) -> Any? {
+        let entity = item as? CatalogueEntity
+        return entity?.indentifier
     }
 }
 
@@ -331,4 +350,37 @@ extension CatalogueListView : MenuOutlineViewDelegate, NSMenuDelegate {
         outlineView.removeItems(at: IndexSet([row]), inParent: currentCatalog.perent, withAnimation: .slideDown)
         let _ = currentCatalog.perent?.remove(currentCatalog)
     }
+}
+
+// MARK: -
+
+extension CatalogueListView {
+    
+    // Restorable key for the currently selected outline node on state restoration.
+    private static let savedSelectionKey = "savedSelectionKey"
+
+    /// Key paths for window restoration (including our view controller).
+    override class var restorableStateKeyPaths: [String] {
+        var keys = super.restorableStateKeyPaths
+        keys.append(savedSelectionKey)
+        return keys
+    }
+
+    /// Encode state. Helps save the restorable state of this view controller.
+    override func encodeRestorableState(with coder: NSCoder) {
+        let selectedObjects = selectionIndexPaths
+        coder.encode(selectedObjects, forKey: CatalogueListView.savedSelectionKey)
+        super.encodeRestorableState(with: coder)
+    }
+
+    /// Decode state. Helps restore any previously stored state.
+    override func restoreState(with coder: NSCoder) {
+        super.restoreState(with: coder)
+        // Restore the selected indexPaths.
+        if let savedSelectedIndexPaths =
+            coder.decodeObject(forKey: CatalogueListView.savedSelectionKey) as? [IndexPath] {
+            print("restoreState", savedSelectedIndexPaths)
+        }
+    }
+    
 }

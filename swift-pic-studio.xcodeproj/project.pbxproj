@@ -30,6 +30,9 @@
 		8158CCEC24CDCE7A00BD1240 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */; };
 		8158CCF024CDDEF600BD1240 /* ThumbnailImageGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */; };
 		8158CCF224CE0B9200BD1240 /* ThumbnailImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */; };
+		81C1DC0424E0204E00B6F3ED /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C1DC0324E0204E00B6F3ED /* Library.swift */; };
+		81C1DC0624E0389200B6F3ED /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C1DC0524E0389200B6F3ED /* Database.swift */; };
+		81C1DC0824E0618100B6F3ED /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C1DC0724E0618100B6F3ED /* AppDatabase.swift */; };
 		81FF199A24D5E97300E9EE0C /* NSImage+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF199924D5E97300E9EE0C /* NSImage+CGImage.swift */; };
 		81FF199C24D5F38300E9EE0C /* CatalogueTitledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF199B24D5F38300E9EE0C /* CatalogueTitledCellView.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +64,9 @@
 		8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageGridCell.swift; sourceTree = "<group>"; };
 		8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailImageGridView.swift; sourceTree = "<group>"; };
+		81C1DC0324E0204E00B6F3ED /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		81C1DC0524E0389200B6F3ED /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		81C1DC0724E0618100B6F3ED /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		81FF199924D5E97300E9EE0C /* NSImage+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+CGImage.swift"; sourceTree = "<group>"; };
 		81FF199B24D5F38300E9EE0C /* CatalogueTitledCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueTitledCellView.swift; sourceTree = "<group>"; };
 		AA646DB1C2609EE594349DD5 /* Pods-swift-pic-studio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-pic-studio.debug.xcconfig"; path = "Target Support Files/Pods-swift-pic-studio/Pods-swift-pic-studio.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 		8158CCD024CDAD7F00BD1240 /* swift-pic-studio */ = {
 			isa = PBXGroup;
 			children = (
+				81C1DC0724E0618100B6F3ED /* AppDatabase.swift */,
 				8158CCD124CDAD7F00BD1240 /* AppDelegate.swift */,
 				8158CCD524CDAD8100BD1240 /* Assets.xcassets */,
 				8131499D24D3220A0074925F /* CatalogueCellView.swift */,
@@ -116,13 +123,13 @@
 				278E373124CEBAD100B31697 /* ImageCollectionView.swift */,
 				8158CCDA24CDAD8100BD1240 /* Info.plist */,
 				8158CCD724CDAD8100BD1240 /* Main.storyboard */,
+				814F174024D83E490035E9E9 /* MenuOutlineView.swift */,
 				8158CCE824CDBCA300BD1240 /* Model */,
 				81FF199924D5E97300E9EE0C /* NSImage+CGImage.swift */,
 				8158CCDB24CDAD8100BD1240 /* swift_pic_studio.entitlements */,
 				8158CCEF24CDDEF600BD1240 /* ThumbnailImageGridCell.swift */,
 				8158CCF124CE0B9200BD1240 /* ThumbnailImageGridView.swift */,
 				278E372D24CEAF8D00B31697 /* WorkstationView.swift */,
-				814F174024D83E490035E9E9 /* MenuOutlineView.swift */,
 			);
 			path = "swift-pic-studio";
 			sourceTree = "<group>";
@@ -134,6 +141,8 @@
 				8158CCEB24CDCE7A00BD1240 /* ImageParser.swift */,
 				27D1DA0824D284E60049920E /* FastImageSize.swift */,
 				8131499924D312900074925F /* CatalogueEntity.swift */,
+				81C1DC0324E0204E00B6F3ED /* Library.swift */,
+				81C1DC0524E0389200B6F3ED /* Database.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -275,6 +284,7 @@
 				278E372E24CEAF8D00B31697 /* WorkstationView.swift in Sources */,
 				8158CCEC24CDCE7A00BD1240 /* ImageParser.swift in Sources */,
 				8158CCF224CE0B9200BD1240 /* ThumbnailImageGridView.swift in Sources */,
+				81C1DC0624E0389200B6F3ED /* Database.swift in Sources */,
 				278E373024CEB9A900B31697 /* ImageCollectionItem.swift in Sources */,
 				8158CCEA24CDBCCB00BD1240 /* DesktopEntity.swift in Sources */,
 				8158CCD424CDAD7F00BD1240 /* FolderViewController.swift in Sources */,
@@ -291,6 +301,8 @@
 				8158CCD224CDAD7F00BD1240 /* AppDelegate.swift in Sources */,
 				81FF199C24D5F38300E9EE0C /* CatalogueTitledCellView.swift in Sources */,
 				278E373224CEBAD100B31697 /* ImageCollectionView.swift in Sources */,
+				81C1DC0424E0204E00B6F3ED /* Library.swift in Sources */,
+				81C1DC0824E0618100B6F3ED /* AppDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

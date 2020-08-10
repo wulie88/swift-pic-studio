@@ -16,6 +16,14 @@ protocol ImageCollectionViewDelegate : NSObjectProtocol {
     func presentImageEditer(items: Array<DesktopFileEntity>, currentIndex: Int, sender: NSView)
 }
 
+// Drag and Drop support, our custom pasteboard type.
+extension NSPasteboard.PasteboardType {
+    
+    // This is a UTI string should be a unique identifier.
+    static let imageCollectionItemPasteBoardType =
+        NSPasteboard.PasteboardType("imageCollectionItemPasteBoardType")
+}
+
 class ImageCollectionView: NSView, ImageCollectionItemDelegate {
     
     var isHoldCommandKey = false
@@ -26,7 +34,11 @@ class ImageCollectionView: NSView, ImageCollectionItemDelegate {
     
     @IBOutlet weak var toobar: ImageCollectionToolbar!
     
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var collectionView: NSCollectionView! {
+        didSet {
+            populateOutlineContents()
+        }
+    }
     
     var selectedIndexPaths: Array<IndexPath> = []
     
@@ -37,13 +49,13 @@ class ImageCollectionView: NSView, ImageCollectionItemDelegate {
     func updateItems(items: [DesktopFileEntity]) {
         flowLayout = ImageCollectionFlowLayout()
         flowLayout!.setup(items: items)
-        
         collectionView.collectionViewLayout = flowLayout
-        collectionView.setDraggingSourceOperationMask(.link, forLocal: true)
-        collectionView.registerForDraggedTypes([.png])
-        
         toobar.setup(type: flowLayout!.type)
         toobar.delegate = self
+    }
+    
+    func populateOutlineContents() {
+//        collectionView.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
     }
     
     override func layout() {
@@ -97,15 +109,36 @@ extension ImageCollectionView : NSCollectionViewDataSource {
     
     // MARK: Drag and drop
     
+    func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexes: IndexSet, with event: NSEvent) -> Bool {
+        return true
+    }
+    
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt index: Int) -> NSPasteboardWriting? {
         let indexPath: IndexPath = IndexPath(item: index, section: 0)
         let imageEntity = flowLayout!.imageEntity(withIndexPath: indexPath)
-        return imageEntity?.thumbnailImage
+        guard let url = imageEntity?.fileUrl else {
+            return nil
+        }
+        
+        return url as NSURL
     }
     
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
-       return .copy
-   }
+        if proposedDropOperation.pointee == NSCollectionView.DropOperation.on {
+            proposedDropOperation.pointee = NSCollectionView.DropOperation.before
+        }
+        
+       return .move
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forItemsAt indexes: IndexSet) {
+        
+//        itemsDrag = indexes
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, dragOperation operation: NSDragOperation) {
+//        itemsDrag = []
+    }
 }
 
 extension ImageCollectionView : NSCollectionViewDelegate {
@@ -161,5 +194,15 @@ extension ImageCollectionView : ImageCollectionToolbarDelegate {
     func flowLayoutTypeDidChanged(type: ImageCollectionFlowLayoutType) {
         flowLayout!.type = type
         collectionView.reloadData()
+    }
+}
+
+extension ImageCollectionView : NSPasteboardWriting {
+    func writableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
+        return [.imageCollectionItemPasteBoardType]
+    }
+    
+    func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
+        return nil
     }
 }

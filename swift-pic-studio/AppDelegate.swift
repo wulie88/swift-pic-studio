@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         documentController = DocumentController()
+        Library.instance(recentDocumentURLs: documentController!.recentDocumentURLs)
+        print("recentDocumentURLs", documentController!.recentDocumentURLs)
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
